@@ -1,0 +1,99 @@
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    vertical-align:baseline;
+    background:transparent;
+}
+h1,h2,h3,h4,h5,h6{ font-weight:normal;}
+html,body {
+    font-size: 14px;
+    line-height:1.2;
+    font-family:"Microsoft YaHei", Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC",  "WenQuanYi Micro Hei";
+    -webkit-font-smoothing:antialiased;
+    font-smoothing:antialiased;
+    -webkit-backface-visibility:hidden;
+    backface-visibility:hidden;
+}
+textarea, input[type="text" i], input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
+    padding:0;margin: 0;
+    font-family:"Microsoft YaHei", Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC",  "WenQuanYi Micro Hei";
+}
+textarea::input-placeholder,textarea::-webkit-input-placeholder,textarea:-moz-placeholder,textarea::-moz-placeholder,textarea:-ms-input-placeholder,input::-webkit-input-placeholder,input:placeholder,input:-moz-placeholder,input::-moz-placeholder,input:-ms-input-placeholder{font-family:"Microsoft YaHei", Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC",  "WenQuanYi Micro Hei";}
+article,aside,canvas,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section,summary { 
+    display:block;
+}
+
+ul {
+    list-style:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+a,a:link,a:visited,a:active{ text-decoration:none;}
+a:hover{color: #ffc000;}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+input,button,select,textarea{ outline:none;border:none;}
+input:focus,button:focus,select:focus,textarea:focus{ outline:none;border:0;border:none;}
+textarea{resize:none;}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {  
+              -webkit-transition-delay: 9999s;   
+             -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
+}
+input:-ms-autofill,
+input:-ms-autofill:hover,
+input:-ms-autofill:focus,
+input:-ms-autofill:active {  
+              -ms-transition-delay: 9999s;   
+             -ms-transition: color 9999s ease-out, background-color 9999s ease-out;
+}
+input:-webkit-autofill{-webkit-box-shadow: 0 0 0px 1000px white inset;}
+::-ms-clear, ::-ms-reveal{display: none;}
+.peripheral .right .station > ul::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+.peripheral .right .station > ul::-webkit-scrollbar-button {
+    height: 0;
+    width: 0;
+}
+.peripheral .right .station > ul::-webkit-scrollbar-thumb {
+    background: #ccc;
+}
+.peripheral .right .station > ul::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+.peripheral .right .station > ul {
+    scrollbar-base-color: #ccc;
+    scrollbar-3dlight-color: #ccc;
+    scrollbar-highlight-color: #ccc;
+    scrollbar-track-color: #f1f1f1;
+    scrollbar-arrow-color: #000;
+    scrollbar-shadow-color: #ccc;
+    scrollbar-dark-shadow-color: #ccc;
+}

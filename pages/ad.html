@@ -1,0 +1,32 @@
+]<!DOCTYPE html> 
+<html> 
+<head> 
+<title>街景与地图连动插件</title> 
+<script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=xxx"></script> 
+<!--引入插件--> 
+<script 
+src="http://open.map.qq.com/plugin/v2/PanoramaOverview/PanoramaOverview-min.js"></script> 
+</head> 
+<body> 
+<!--以下div街景-->
+<div id="panoCon" style="height: 400px;"></div> 
+<!--以下div显示地图-->
+<div id="overViewCon" style="height:200px;"></div> 
+</body> 
+<script> 
+//创建街景
+var panorama = new soso.maps.Panorama('panoCon', { 
+pano:'10011002120217122815886', //场景ID
+}); 
+//创建插件实例 
+var ovc=document.getElementById('overViewCon'); //地图容器（与街景连动的地图）
+var overview = new soso.maps.PanoOverview(ovc,{ 
+panorama:panorama 
+}); 
+ 
+//以下方法可获取连动地图的Map实例
+//获取后，可根据自己需要进行后续逻辑开发，如：在地图上标注、添加infowindow 或 覆盖物等
+var map=overview.getMap();
+ 
+</script> 
+</html>

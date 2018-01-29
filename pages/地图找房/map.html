@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name=renderer content=webkit>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="shortcut icon" href="../../../static/front/images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" type="image/x-icon" href="../../../static/front/images/favicon.ico">
+  <link rel="stylesheet" href="../../../static/front/css/wz/rs.css">
+  <link rel="stylesheet" href="../../../static/front/css/gcr/rent.css">
+  <link rel="stylesheet" href="../../../static/front/iconfont/font-rent/iconfont.css">
+  <script src="../../../static/front/js/jquery.js"></script>
+  <script src="../../../static/front/js/layer/layer.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=KwZhXg0g9C5zZpDIZX895Xfn"></script>
+  <title>大鱼 - 专业的一站式公寓PMS云平台</title>
+  <meta name="description" content="专业的一站式公寓PMS云平台">
+  <style type="text/css">
+    .circal{width:94px;height:94px;border-radius:50%;color:#fff;padding-top:22px;box-sizing:border-box;background:url('../../../static/front/images/com.png') no-repeat center center;}
+    .circal:hover{background:url('../../../static/front/images/cur.png') no-repeat center center;}
+    .circal p{text-align:center;font-family:'微软雅黑';font-weight:bold;line-height:26px;}
+    .circal2{width:140px;height:30px;line-height:30px;text-align:center;padding-top:0;background:url('../../../static/front/images/bubble.png') no-repeat center center;border-radius:0%;background-size:100% 100%;font-weight:bold;border-radius:0%;}
+    .circal2:hover{background:url('../../../static/front/images/bubble2.png') no-repeat center center;background-size:100% 100%;}
+  </style>
+</head>
+<body style="min-width:1366px;">
+  <div class="head-wrapper">
+    <div class="header per-header text-left shadow clearfix mapHeader">
+      <div class="logo per-logo text-left float-left">
+        <a class="float-left" href="http://192.168.0.11:84/front/wz/%E9%A6%96%E9%A1%B5.html"><img class="maplogo" src="../../../static/front/images/logo.png" alt=""></a>
+        <div class="select-box houseHeaderUl">
+          <ul class="build-result houseResult" style="display:none;">
+            <li><a href="javascript:;" data-val="1">北京</a></li>
+            <li><a href="javascript:;" data-val="2">上海</a></li>
+            <li><a href="javascript:;" data-val="3">天津</a></li>
+            <li><a href="javascript:;" data-val="4">重庆</a></li>
+          </ul>
+          <span class="select-title hook-select houseHeaderSpan">郑州</span>
+          <input type="hidden" name="yss" id="yss" value="1">
+          <i class="icon iconfont icon-toDown hook-select arrow-bottom"></i>
+        </div>
+      </div>
+      <div class="findHouseHead float-left clearfix">
+        <div class="hourseItem float-left clearfix">
+        <div class="float-left houseHeaderUl houseMapHeader">
+            <ul class="houseType houseResult" style="display: none;">
+                <li><a href="javascript:;" data-val="1">不限</a></li>
+                <li><a href="javascript:;" data-val="2">整租</a></li>
+                <li><a href="javascript:;" data-val="3">合租</a></li>
+            </ul>
+            <span class="houseHeaderSpan hook-select">方式</span>
+            <input type="hidden" value="0">
+            <i class="icon iconfont icon-xiala hook-select"></i>
+          </div>
+          <div class="float-left houseHeaderUl houseMapHeader">
+            <ul class="houseType houseResult" style="display: none;">
+                <li><a href="javascript:;" data-val="1">不限</a></li>
+                <li><a href="javascript:;" data-val="2">一室</a></li>
+                <li><a href="javascript:;" data-val="3">二室</a></li>
+                <li><a href="javascript:;" data-val="4">三室</a></li>
+                <li><a href="javascript:;" data-val="5">四室</a></li>
+                <li><a href="javascript:;" data-val="6">五室</a></li>
+                <li><a href="javascript:;" data-val="7">五室以上</a></li>
+            </ul>
+            <span class="houseHeaderSpan hook-select">户型</span>
+            <input type="hidden" value="0">
+            <i class="icon iconfont icon-xiala hook-select"></i>
+          </div>
+          <div class="float-left houseHeaderUl houseMapHeader">
+            <ul class="houseType houseResult" style="display: none;">
+                <li><a href="javascript:;" data-val="1">不限</a></li>
+                <li><a href="javascript:;" data-val="2">800元以下</a></li>
+                <li><a href="javascript:;" data-val="3">801-1000元</a></li>
+                <li><a href="javascript:;" data-val="4">1001-1500元</a></li>
+                <li><a href="javascript:;" data-val="5">1501-2000元</a></li>
+                <li><a href="javascript:;" data-val="6">2000元以上</a></li>
+            </ul>
+            <span class="houseHeaderSpan hook-select">租金</span>
+            <input type="hidden" value="0">
+            <i class="icon iconfont icon-xiala hook-select"></i>
+          </div>
+          <div class="float-left houseHeaderUl houseMapHeaderLast">           
+            <ul class="houseType houseResult houseMapUlLast" style="display:none;">
+                <li>
+                  <h3>配套</h3>
+                  <div class="morecontent">
+                    <span class="checkbox-custom total" href="##" data-val="0">
+                      <input class="checkbox" type="checkbox" checked=true>  
+                      <label for="">不限</label>    
+                    </span>
+                    <div class="clearfix">
+                      <span class="checkbox-custom" href="javascript:;" data-val="1">
+                        <input class="checkbox" type="checkbox">  
+                        <label title="独立卫生间" for="">独立卫生间</label>
+                      </span>
+                      <span class="checkbox-custom" href="javascript:;" data-val="2">
+                        <input class="checkbox" type="checkbox">  
+                        <label title="飘窗" for="">飘窗</label>
+                      </span>
+                      <span class="checkbox-custom" href="javascript:;" data-val="3">
+                        <input class="checkbox" type="checkbox">  
+                        <label title="阳台" for="">阳台</label>
+                      </span>
+                      <span class="checkbox-custom" href="javascript:;" data-val="4">
+                        <input class="checkbox" type="checkbox">  
+                        <label title="可住2人" for="">可住2人</label>
+                      </span>
+                      <span class="checkbox-custom" href="javascript:;" data-val="5">
+                        <input class="checkbox" type="checkbox">  
+                        <label title="暖气房" for="">暖气房</label>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <h3>付款</h3>
+                  <div class="morecontent radio-Div">
+                    <div class="clearfix radioDiv">
+                      <span class="checkbox-custom" href="javascript:;" data-val="0">
+                        <input class="checkbox on" type="radio" name="pay" checked="checked"> 
+                        <label title="不限" for="">不限</label>
+                      </span>
+                      <span class="checkbox-custom" href="javascript:;" data-val="1">
+                        <input class="checkbox" type="radio" name="pay"> 
+                        <label title="付一" for="">付一</label>
+                      </span>
+                      <span class="checkbox-custom" href="javascript:;" data-val="2">
+                        <input class="checkbox" type="radio" name="pay"> 
+                        <label title="付三" for="">付三</label>
+                      </span>
+                      <span class="checkbox-custom" href="javascript:;" data-val="3">
+                        <input class="checkbox" type="radio" name="pay"> 
+                        <label title="付六" for="">付六</label>
+                      </span>
+                      <span class="checkbox-custom" href="javascript:;" data-val="4">
+                        <input class="checkbox" type="radio" name="pay">   
+                        <label title="付一年" for="">付一年</label>
+                      </span>
+                      <span class="checkbox-custom" href="javascript:;" data-val="5">
+                        <input class="checkbox" type="radio" name="pay">  
+                        <label title="其他" for="">其他</label>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <h3>入住</h3>
+                  <div class="morecontent radio-Div">
+                    <div class="clearfix radioDiv">
+                      <span class="checkbox-custom" data-val="0">
+                        <input class="checkbox on" type="radio" name="intake" checked="checked">  
+                        <label title="不限" for="">不限</label>
+                      </span>
+                      <span class="checkbox-custom" data-val="1">
+                        <input class="checkbox" type="radio" name="intake">  
+                        <label title="立即入住" for="">立即入住</label>
+                      </span>
+                      <span class="checkbox-custom" data-val="2">
+                        <input class="checkbox" type="radio" name="intake">  
+                        <label title="一周内入住" for="">一周内入住</label>
+                      </span>
+                      <span class="checkbox-custom" data-val="3">
+                        <input class="checkbox" type="radio" name="intake">  
+                        <label title="两周内入住" for="">两周内入住</label>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <input class="button cancel" type="button" value="取消">
+                  <input class="button confirm" type="button" value="确定">
+                </li>
+            </ul>
+            <span class="houseHeaderSpan hook-select">更多</span>           
+            <input type="hidden" value="0">
+            <i class="icon iconfont icon-xiala hook-select"></i>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix float-left">
+        <div class="float-left searchDiv">
+          <input class="search" type="text" placeholder="请输入区域、商圈或小区名开始找房">
+          <input class="searchBtn" type="button" value="立即找房">
+        </div>
+        <div class="float-left list">
+          <i class="icon iconfont icon-liebiao"></i>
+          <a class="listType" href="http://192.168.0.11:84/front/wz/%E6%88%BF%E5%B1%8B%E5%88%97%E8%A1%A8.html">列表模式</a>
+        </div>
+      </div>
+      <div class="logonDiv float-right">
+        <a class="map-logon log" href="##">登录</a>
+        <!-- <a class="map-register" href="##">注册</a> -->
+      </div>
+    </div>
+  </div>
+  <div class="map-container clearfix">
+    <div class="map-list float-left">
+      <div class="sortby clearfix">
+        <a href="##" class="sort recommend">推荐排序</a>
+        <a href="##" class="sort sort-a"><em class="txt">价格</em><i class="icon iconfont icon-jiantou"></i></a>
+        <a href="##" class="sort sort-a borderright0"><em class="txt">最新发布</em><i class="icon iconfont icon-jiantou"></i></a>
+      </div>
+      <div class="map-hourse">
+        <ul class="scroll">
+          <li>
+            <div class="list-middle-item list-item clearfix">
+              <div class="mappic">
+                <a href="http://192.168.0.11:84/front/wz/%E6%88%BF%E5%B1%8B%E8%AF%A6%E6%83%85.html">
+                  <img src="../../../static/front/images/map1.png" alt="">
+                  <div class="cover">
+                    <span class="seeHourse">我要看房</span>
+                  </div>
+                </a>
+              </div>
+              <div class="detail">
+                <a class="name"  href="http://192.168.0.11:84/front/wz/%E6%88%BF%E5%B1%8B%E8%AF%A6%E6%83%85.html" title="【合租】睿智花园4居室-北卧">【合租】睿智花园4居室-北卧</a>
+                <p class="desc">
+                  <i class="icon iconfont icon-ditu1"></i>
+                  <span class="district" title="金水区">金水区</span>
+                  <span class="distance" title="平安大道西200米">平安大道西200米</span>
+                </p>
+                <p class="flag">
+                  <span class="clean" title="免费保洁">免费保洁</span>
+                  <span class="wifi" title="免费WiFi">免费WiFi</span>
+                </p>
+                <p class="price">
+                  <span class="money">1600</span>
+                  <span class="month">/月</span>
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="list-middle-item list-item clearfix">
+              <div class="mappic">
+                <a href="http://192.168.0.11:84/front/wz/%E6%88%BF%E5%B1%8B%E8%AF%A6%E6%83%85.html">
+                  <img src="../../../static/front/images/map1.png" alt="">
+                  <div class="cover">
+                    <span class="seeHourse">我要看房</span>
+                  </div>
+                </a>
+              </div>
+              <div class="detail">
+                <a class="name"  href="http://192.168.0.11:84/front/wz/%E6%88%BF%E5%B1%8B%E8%AF%A6%E6%83%85.html" title="【合租】睿智花园4居室-北卧">【合租】睿智花园4居室-北卧</a>
+                <p class="desc">
+                  <i class="icon iconfont icon-ditu1"></i>
+                  <span class="district" title="金水区">金水区</span>
+                  <span class="distance" title="平安大道西200米">平安大道西200米</span>
+                </p>
+                <p class="flag">
+                  <span class="clean" title="免费保洁">免费保洁</span>
+                  <span class="wifi" title="免费WiFi">免费WiFi</span>
+                </p>
+                <p class="price">
+                  <span class="money">1600</span>
+                  <span class="month">/月</span>
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="list-middle-item list-item clearfix">
+              <div class="mappic">
+                <a href="http://192.168.0.11:84/front/wz/%E6%88%BF%E5%B1%8B%E8%AF%A6%E6%83%85.html">
+                  <img src="../../../static/front/images/map1.png" alt="">
+                  <div class="cover">
+                    <span class="seeHourse">我要看房</span>
+                  </div>
+                </a>
+              </div>
+              <div class="detail">
+                <a class="name"  href="http://192.168.0.11:84/front/wz/%E6%88%BF%E5%B1%8B%E8%AF%A6%E6%83%85.html" title="【合租】睿智花园4居室-北卧">【合租】睿智花园4居室-北卧</a>
+                <p class="desc">
+                  <i class="icon iconfont icon-ditu1"></i>
+                  <span class="district" title="金水区">金水区</span>
+                  <span class="distance" title="平安大道西200米">平安大道西200米</span>
+                </p>
+                <p class="flag">
+                  <span class="clean" title="免费保洁">免费保洁</span>
+                  <span class="wifi" title="免费WiFi">免费WiFi</span>
+                </p>
+                <p class="price">
+                  <span class="money">1600</span>
+                  <span class="month">/月</span>
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="list-middle-item list-item clearfix">
+              <div class="mappic">
+                <a href="http://192.168.0.11:84/front/wz/%E6%88%BF%E5%B1%8B%E8%AF%A6%E6%83%85.html">
+                  <img src="../../../static/front/images/map1.png" alt="">
+                  <div class="cover">
+                    <span class="seeHourse">我要看房</span>
+                  </div>
+                </a>
+              </div>
+              <div class="detail">
+                <a class="name"  href="http://192.168.0.11:84/front/wz/%E6%88%BF%E5%B1%8B%E8%AF%A6%E6%83%85.html" title="【合租】睿智花园4居室-北卧">【合租】睿智花园4居室-北卧</a>
+                <p class="desc">
+                  <i class="icon iconfont icon-ditu1"></i>
+                  <span class="district" title="金水区">金水区</span>
+                  <span class="distance" title="平安大道西200米">平安大道西200米</span>
+                </p>
+                <p class="flag">
+                  <span class="clean" title="免费保洁">免费保洁</span>
+                  <span class="wifi" title="免费WiFi">免费WiFi</span>
+                </p>
+                <p class="price">
+                  <span class="money">1600</span>
+                  <span class="month">/月</span>
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="list-middle-item list-item clearfix">
+              <div class="mappic">
+                <a href="http://192.168.0.11:84/front/wz/%E6%88%BF%E5%B1%8B%E8%AF%A6%E6%83%85.html">
+                  <img src="../../../static/front/images/map1.png" alt="">
+                  <div class="cover">
+                    <span class="seeHourse">我要看房</span>
+                  </div>
+                </a>
+              </div>
+              <div class="detail">
+                <a class="name"  href="http://192.168.0.11:84/front/wz/%E6%88%BF%E5%B1%8B%E8%AF%A6%E6%83%85.html" title="【合租】睿智花园4居室-北卧">【合租】睿智花园4居室-北卧</a>
+                <p class="desc">
+                  <i class="icon iconfont icon-ditu1"></i>
+                  <span class="district" title="金水区">金水区</span>
+                  <span class="distance" title="平安大道西200米">平安大道西200米</span>
+                </p>
+                <p class="flag">
+                  <span class="clean" title="免费保洁">免费保洁</span>
+                  <span class="wifi" title="免费WiFi">免费WiFi</span>
+                </p>
+                <p class="price">
+                  <span class="money">1600</span>
+                  <span class="month">/月</span>
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div id="page" class="page_div"></div>
+      </div>
+    </div>
+    <div class="map-wrapper">
+      <div class="map" id="map"></div>
+    </div>
+  </div>
+</body>
+<script src="../../../static/front/js/gcr/opt.js"></script>
+<script src="../../../static/front/js/gcr/paging.js"></script>
+<script src="../../../static/front/js/gcr/dropDown.js"></script>
+<script>
+
+
+//分页
+  $("#page").paging({
+    pageNo:1,
+    totalPage: 9,
+    totalSize: 300,
+    callback: function(num) {}
+  })
+
+    /*
+  // 模拟ajax数据用以下方法，方便用户更好的掌握用法
+  //参数为当前页
+  ajaxTest(1);
+  
+  function ajaxTest(num) {
+    $.ajax({
+      url: "table.json",
+      type: "get",
+      data: {},
+      dataType: "json",
+      success: function(data) {
+        console.log(data);
+        //分页
+        $("#page").paging({
+          pageNo: num,
+          totalPage: data.totalPage,
+          totalSize: data.totalSize,
+          callback: function(num) {
+            ajaxTest(num)
+          }
+        })
+      }
+    })
+  }
+  */
+  $(document).ready(function(){
+    var H = innerHeight ||  document.body.clientHeight || document.documentElement.clientHeight;
+    $('#map').height(H - 90);
+    $(window).resize(function(){
+      var H = innerHeight ||  document.body.clientHeight || document.documentElement.clientHeight;
+      $('#map').height(H - 90);
+    });
+  });
+
+  var map = new BMap.Map("map"); 
+  // 初始化地图,设置城市和地图级别。
+  map.enableScrollWheelZoom();  // 开启鼠标滚轮缩放    
+  map.enableKeyboard();         // 开启键盘控制    
+  map.enableContinuousZoom();   // 开启连续缩放效果    
+  map.enableInertialDragging(); // 开启惯性拖拽效果  
+  // 百度地图API功能
+  var point = new BMap.Point(113.663, 34.806);
+  map.centerAndZoom(point,15);
+  var opts = {
+    position : point,    // 指定文本标注所在的地理位置
+    offset   : new BMap.Size(30, -30)//设置文本偏移量
+  }
+  var label = new BMap.Label('<div class=\"circal\"><p>金水区</p><p>10258间</p></div>', opts);
+  label.setStyle({
+   border : "none",
+   background:"transparent"
+ });
+  map.addOverlay(label);   
+ label.addEventListener('click', function (e) {
+  $('.circal').html('<span style="margin-right:6px;">金水区</span><span>10258间</span>').addClass('circal2');
+  label.setStyle({
+   border : "none",
+   borderRadius:'0%'
+ });
+});
+
+
+ // 百度地图API功能
+  // var map = new BMap.Map("map");
+  // var point = new BMap.Point(116.404, 39.915);
+  // map.centerAndZoom(point, 15);
+  // map.disableDoubleClickZoom(true);
+    
+  // // 编写自定义函数,创建标注
+  // function addMarker(point,label){
+  //   var marker = new BMap.Marker(point);
+  //   map.addOverlay(marker);
+  //   marker.setLabel(label);
+  // }
+  // // 随机向地图添加25个标注
+  // var bounds = map.getBounds();
+  // var sw = bounds.getSouthWest();
+  // var ne = bounds.getNorthEast();
+  // var lngSpan = Math.abs(sw.lng - ne.lng);
+  // var latSpan = Math.abs(ne.lat - sw.lat);
+  // for (var i = 0; i < 3; i++) {
+  //   var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
+  //   var label = new BMap.Label("<div class=\"circal\"><p>金水区</p><p>10258间</p></div>"+i,point);
+  //   label.setStyle({
+  //    border : "none",
+  //    width:"94px",
+  //    height:"94px",
+  //    background:"transparent"
+  //  });
+  //   addMarker(point,label);
+  // }
+  
+</script>
+</html>

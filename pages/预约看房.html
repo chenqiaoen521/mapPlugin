@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name=renderer content=webkit>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="shortcut icon" href="../../static/image/favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/x-icon" href="../../static/front/images/favicon.ico">
+  <link rel="stylesheet" href="../../static/front/css/wz/bootstrap.min.css">
+  <link rel="stylesheet" href="../../static/front/css/wz/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" href="../../static/front/css/wz/rs.css">
+  <link rel="stylesheet" href="../../static/front/css/wz/zf.css">
+  <script src="../../static/front/js/jquery.js"></script>
+  <script src="../../static/front/js/chooseManager.js"></script>
+  <script src="../../static/front/js/jquery.easing.1.3.js"></script>
+  <script src="../../static/front/js/jquery.validate.js"></script>
+  <script src="../../static/front/js/layer/layer.js"></script>
+  <script src="../../static/front/js/jquery.validate.messages_cn.js"></script>
+  <script src="../../static/front/js/chooseManager.js"></script>
+
+  <script src="../../static/front/js/bootstrap-datetimepicker.min.js"></script>
+  <title>预约看房</title>
+  <script>
+    $(function(){
+       $.fn.datetimepicker.dates['en'] = {
+    days: ["日", "一", "二", "三", "四", "五", "六", "日"],
+    daysShort: ["日", "一", "二", "三", "四", "五", "六", "日"],
+    daysMin: ["日", "一", "二", "三", "四", "五", "六", "日"],
+    months: ["1月", "2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],
+    monthsShort: ["1月", "2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],
+    today: "今天",
+    meridiem:    ["am", "pm"]
+};
+var endTime = parseInt(new Date().getTime()) + (1000 * 60 * 60 * 24 * 7)
+$('#kanfang').datetimepicker({
+format:'yyyy-mm-dd hh:00',
+weekStart: 1,
+startDate: new Date(),
+endDate: new Date(endTime),
+todayBtn: false,
+autoclose: 1,
+minView: 1,
+todayHighlight: 1,
+startView: 2,
+forceParse: 0
+}); 
+      $('#yykf_submit').click(function(){
+      layer.alert('',{
+        title:'',
+        btn: ['关闭'],
+        content:'<div><i class="ii-success" style="font-size:50px;color:#3fc5a4;"></i></div><h1 style="margin:10px 0 20px; text-indent:11px;font-size:20px;">提交成功！</h1><p>您的信息我们已收到，我们会尽快与您联系！</p>',
+        time:3000,
+        shade:false,
+        skin: 'layer-ext-dayu' //样式类名
+        ,closeBtn: 0
+        });
+    });
+    });
+    
+</script>
+</head>
+<body style="min-width: auto">
+  <div id="wykf" class="look-house pr">
+    <!-- <i class="icon icon-x"></i>-->
+    <h5 class="title">预约看房</h5> 
+    <form action="" class="form">
+      <div class="group">
+        <label for="" class="txt">
+          您的姓名：
+        </label>
+        <div class="content" >
+          <input type="text" class="input" placeholder="请输入姓名(必填)">
+        </div>
+      </div>
+      <div class="group">
+        <label for="" class="txt">
+          看房时间：
+        </label>
+        <div class="content" >
+          <input type="text" class="input" id="kanfang" placeholder="请选择时间(必填)">
+        </div>
+      </div>
+      <div class="group">
+        <label for="" class="txt">
+          联系电话：
+        </label>
+        <div class="content">
+          <input type="text" class="input" placeholder="请输入手机号(必填)">
+        </div>
+      </div>
+      <div class="group">
+        <label for="" class="txt">
+          图片验证码：
+        </label>
+        <div class="content pr">
+          <input type="text" class="input" placeholder="请输入图片验证码(必填)">
+          <img src="../../static/front/images/oo.png" class="identifying" alt="">
+        </div>
+      </div>
+      <div class="group">
+        <label for="" class="txt">
+          短信验证码：
+        </label>
+        <div class="content">
+          <input type="text" class="input wid120" placeholder="请输入短信验证码(必填)">
+          <input type="button" class="dx" value="获取验证码">
+        </div>
+      </div>
+      <div class="bottom clearfix">
+        <input type="button" id="yykf_submit" class="submit" value="立即预约">
+      </div>
+    </form>
+    <p class="tips">收不到短信?请拨打客服电话<strong>400 - 0371 - 921</strong>联系大鱼预约看房</p>
+  </div>
+</body>
+</html>

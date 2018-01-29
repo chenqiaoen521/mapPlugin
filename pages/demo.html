@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var quickSort = function(arr) {
+      if (arr.length <= 1) { return arr; }
+      var pivotIndex = Math.floor(arr.length / 2);   //基准位置（理论上可任意选取）
+      var pivot = arr.splice(pivotIndex, 1)[0];  //基准数
+      var left = [];
+      var right = [];
+      for (var i = 0; i < arr.length; i++){
+          if (arr[i] < pivot) {
+              left.push(arr[i]);
+          } else {
+              right.push(arr[i]);
+          }
+      }
+      return quickSort(left).concat([pivot], quickSort(right));  //链接左数组、基准数构成的数组、右数组
+  };
+  //选择排序
+  function selectionSort(arr) {
+    var len = arr.length;
+    var minIndex, temp;
+    for (var i = 0; i < len - 1; i++) {
+        minIndex = i;
+        for (var j = i + 1; j < len; j++) {
+            if (arr[j] < arr[minIndex]) {     // 寻找最小的数
+                minIndex = j;                 // 将最小数的索引保存
+            }
+        }
+        temp = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = temp;
+    }
+    return arr;
+}
+  function selection (arr) {
+    var len = arr.length,
+    minIndex,temp;
+    for (var i=0;i<len-1;i++) {
+      minIndex = i;
+      for (var j=i+1;j<len;j++) {
+        if (arr[minIndex]<arr[j]) {
+          minIndex = j;
+        }
+      }
+      temp = arr[i];
+      arr[i] = arr[minIndex];
+      arr[minIndex] = temp;
+    }
+  }
+  function sort (a) {
+    for (var i = 0; i < a.length - 1; i++) {//比较的次数是length-1
+        for (var j = 0; j < a.length - 1 - i; j++) {
+            if (a[j] > a[j + 1]) {
+                var tmp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = tmp;
+            }
+        }
+    }
+    return a;
+  }
+  
+  function debounce(func,delay) {
+    let timer;
+    if (timer) {
+      clearTimeout(timer);
+    }
+    return function (...args) {
+      setTimeout(() => {
+        func.apply(null,args);
+      }, delay);
+    }
+  }
+
+  function fast (arr) {
+    var len = arr.length;
+    if (len <=1) {return arr;}
+    var spliteIndex = Math.floor(len/2);
+    let middle = arr.splice(spliteIndex,1)[0];
+    len = arr.length;
+    var left = [],
+    right= [];
+    for (var i=0; i<len; i++) {
+      if (arr[i] < middle) {
+        left.push(arr[i])
+      } else {
+        right.push(arr[i])
+      }
+    }
+    return fast(left).concat([middle],fast(right));
+  }
+  function select(arr) {
+    var minIndex,
+    temp,
+    len = arr.length;
+    for (var i=0; i<len-1; i++) {
+      minIndex = i;
+      for (var j=i+1; j<len; j++) {
+        if(arr[j]<arr[minIndex]) {
+          minIndex = j;
+        }
+      }
+      temp = arr[i];
+      arr[i] = arr[minIndex];
+      arr[minIndex] = temp ;
+    }
+    return arr;
+
+  }
+  console.log(select([6,7,2,1,5,8]));
+
+  //选择排序
+  function paixu (arr) {
+    let len = arr.length;
+    let minIndex = 0;
+    let temp;
+    for (let i = 0; i < len ; i ++) {
+      minIndex = i;
+      for (let j = i + 1; j < len ; j ++) {
+        if (arr[i] > arr[j]) {
+          minIndex = j;
+        }
+      }
+      temp = arr [i]
+      arr[i] = arr[minIndex]
+      arr[minIndex] = temp
+    }
+  }
+  console.log(paixu([6,7,2,1,5,8]));
+  function soon (arr) {
+    if (arr.length <= 1) {
+      return arr
+    }
+    let middle = Math.floor(arr.length/2)
+    let left = [],
+    right = [],
+    pivot = arr.splice(middle, 1)[0]
+    for (let i = 0; i < arr.length; i ++) {
+      if (arr[i] < pivot) {
+        left.push(arr[i])
+      } else {
+        right.push(arr[i])
+      }
+    }
+    return soon(left).concat([pivot],soon(right))
+  }
+  console.log(soon([6,7,2,1,5,8]));
+  </script>
+</body>
+</html>

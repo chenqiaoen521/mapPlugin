@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<script>
+  window.addEventListener('error',function(e){
+    console.log('error=');
+    console.log(e);
+  },true);
+  window.addEventListener('error',function(e){
+    console.log('onerror=');
+    console.log(e);
+  },false);
+  function abc(e){
+    console.log('abc=');
+    console.log(e);
+  }
+  document.getElementById('btn').addEventListener('click',function(){
+    console.log(1)
+    //throw new Error('ee')
+  })
+</script>
+<body>
+  <script async  src="//baidu.com/a.js" onerror="abc"></script>
+  <button id="btn">dasdsa</button>
+</body>
+</html>

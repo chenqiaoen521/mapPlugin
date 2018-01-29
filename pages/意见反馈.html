@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name=renderer content=webkit>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="shortcut icon" href="../../static/image/favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/x-icon" href="../../static/front/images/favicon.ico">
+  <link rel="stylesheet" href="../../static/front/css/wz/rs.css">
+  <link rel="stylesheet" href="../../static/front/css/wz/zf.css">
+  <script src="../../static/front/js/jquery.js"></script>
+  <script src="../../static/front/js/chooseManager.js"></script>
+  <script src="../../static/front/js/jquery.easing.1.3.js"></script>
+  <script src="../../static/front/js/jquery.validate.js"></script>
+  <script src="../../static/front/js/layer/layer.js"></script>
+  <script src="../../static/front/js/jquery.validate.messages_cn.js"></script>
+  <script src="../../static/front/js/chooseManager.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../static/front/borain-timeChoice/borain-timeChoice.css">
+  <link rel="stylesheet" type="text/css" href="../../static/front/borain-timeChoice/font-awesome.4.6.0.css">
+  <script src="../../static/front/borain-timeChoice/borain-timeChoice.js"></script>
+  <title>意见反馈</title>
+  <script>
+  $.validator.addMethod('phoneValid',function(value,ele,params){
+    var reg = /^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8])|(19[7]))\d{8}$/;
+    return reg.test(value);
+  },'手机号不正确');
+    $(function(){
+      onLoadTimeChoiceDemo();
+      borainTimeChoice({
+        start:"#kanfang",
+        end:"",
+        level:"HM",
+        less:false
+      });
+      $("#form").validate({
+          rules:{
+            phone:{
+              required:true,
+              digits:true,
+              phoneValid:true
+            },
+            content:{
+              required:true,
+              maxlength:300
+            }
+          },
+          OnSubmit:true,
+          onfocusout:false,
+          onkeyup:false,
+          submitHandler:function(form){
+          
+            //success
+            layer.alert('', {
+              title:'',
+              btn: ['关闭'],
+              time:3000,
+              content:'<div><i class="ii-success" style="font-size:50px;color:#3fc5a4;"></i></div><h1 style="margin:10px 0 20px; text-indent:11px;font-size:20px;">提交成功！</h1><p>感谢您的反馈,有您的支持我们会做得更好！</p>',
+              shade:false,
+              skin: 'layer-ext-dayu',
+              closeBtn: 0
+            });
+          },
+          messages:{
+           phone:{
+            required:'请输入手机号'
+           },
+           content: {
+            required:'请输入内容'
+           }
+          },
+          showErrors:function(errorMap,errorList) { 
+            if(errorList.length > 0){  
+                layer.msg(errorList[0].message,{skin:'gray-class',icon:0});
+            }
+          }
+        });
+    });
+</script>
+</head>
+<body  style="min-width: auto">
+    <div id="yjfk" class="look-house pr">
+    <h5 class="title">意见反馈</h5>
+    <form action="" class="form" id="form">
+      <div class="group">
+        <label for="" class="txt">
+          您的姓名：
+        </label>
+        <div class="content">
+          <input type="text" class="input" placeholder="此项为选填">
+        </div>
+      </div>
+      <div class="group">
+        <label for="" class="txt">
+          联系电话：
+        </label>
+        <div class="content">
+          <input type="text" name="phone" class="input" placeholder="此项为选填">
+        </div>
+      </div>
+      <div class="group">
+        <label for="" class="txt">
+          内容：
+        </label>
+        <div class="content">
+          <textarea name="content" placeholder="请输入您要反馈的内容和建议"></textarea>
+        </div>
+      </div>
+      <div class="bottom clearfix">
+        <input type="submit" id="yjfk_submit" class="submit" value="提交">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

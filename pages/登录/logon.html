@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  	<meta name=renderer content=webkit>
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  	<link rel="shortcut icon" href="../../../static/front/images/favicon.ico" type="image/x-icon" />
+	<link rel="icon" type="image/x-icon" href="../../../static/front/images/favicon.ico">
+	<title>登录</title>
+	<link rel="stylesheet" href="../../../static/front/css/wz/rs.css">
+	<link rel="stylesheet" href="../../../static/front/css/gcr/rent.css">
+	<link rel="stylesheet" href="../../../static/front/iconfont/font-rent/iconfont.css">
+	<script src="../../../static/front/js/jquery.js"></script>
+	<script src="../../../static/front/js/jquery.validate.js"></script>
+	<script src="../../../static/front/js/jquery.validate.messages_cn.js"></script>
+	<script src="../../../static/front/js/layer/layer.js"></script>
+	<script src="../../../static/front/js/gcr/rent.js"></script>
+	<!--[if lt IE 10]>
+	<script src="../../../static/front/js/media.match.min.js"></script>
+	<script src="../../../static/front/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body style="min-width:500px;">
+	<div class="logon" id="logon">
+		<div class="alignLogon">
+			<ul class="clearfix"> 
+				<li class="logonTitle ordinaryTitle text-center float-left active"><a href="##" data-id="ordinary">普通登录</a></li>
+				<li class="logonTitle shortcutTitle text-center float-right"><a href="##" data-id="shortcut">短信快捷登录</a></li>
+			</ul>
+			<div class="alignLogonForm">
+				<div class="logonItem ordinaryCon active" id="ordinary" data-id="ordinary">
+					<form class="logonLeft" onsubmit="return false">
+						<p class="p-input p-text">
+							<i class="icon iconfont icon-shouji"></i>
+							<input class="input-text" type="text" name="tel" placeholder="请输入手机号" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="11">
+						</p>
+						<p class="p-input p-text">
+							<i class="icon iconfont icon-mima"></i>
+							<input class="input-text" type="password" name="password" onkeyup="value=value.trim()" placeholder="请输入密码">
+						</p>
+						<p class="p-forget clearfix">
+							<span class="autologon checkbox-custom"><input class="checkbox" type="checkbox"><label for="">记住密码</label></span>
+							<a class="a-forget float-right" href="forget.html" target="_black">忘记密码？</a>
+						</p>
+						<p class="p-input border-bottom-none p-input-sub">
+							<input class="submit text-center" type="submit" value="登录">
+						</p>
+					</form>
+				</div>
+				<div class="logonItem shortcutCon" id="shortcut" data-id="shortcut">
+					<form class="logonRight" onsubmit="return false">
+						<p class="p-input p-text inputfocus">
+							<i class="icon iconfont icon-shouji"></i>
+							<input class="input-text input-tel reqInput" type="text" name="tel" placeholder="请输入手机号" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="11">
+						</p>
+						<p class="p-input p-text for-content p-codepic">
+							<i class="icon iconfont icon-yanzhengma1"></i>
+							<input class="input-text input-tel" type="text" name="imgscode" placeholder="请输入图片验证码">
+							<input type="button" class="randomCode randomCodePic text-center" value="1582">
+						</p>
+						<p class="p-input p-text parent">
+							<i class="icon iconfont icon-yanzhengma1"></i>
+							<input class="input-text" type="number" name="code" placeholder="请输入手机验证码">
+							<input type="button" class="tel-code code text-center" value="获取验证码">
+						</p>
+						<p class="p-input border-bottom-none p-input-sub">
+							<input class="submit" type="submit" value="登录">
+						</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name=renderer content=webkit>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../css/bt.css">
+  <link rel="stylesheet" href="../font/font-awesome/font-awesome.css">
+  <link rel="stylesheet" href="../css/rs.css">
+  <link rel="stylesheet" href="../css/zf.css">
+  <script src="../js/jquery.js"></script>
+  <script src="../js/chooseManager.js"></script>
+  <script src="../js/jquery.easing.1.3.js"></script>
+  <script src="../js/jquery.validate.js"></script>
+  <script src="../js/jquery.validate.messages_cn.js"></script>
+  <script src="../js/layer/layer.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=KwZhXg0g9C5zZpDIZX895Xfn"></script>
+  <title>大鱼 - 专业的一站式公寓PMS云平台</title>
+  <meta name="description" content="专业的一站式公寓PMS云平台">
+  <script>
+    $(function(){
+      chooseManager();
+    managerResult();
+    unbind();
+    mouseleaveHide();
+      // 登录页面
+  $('.log').on('click',function(){
+    layer.open({
+      type:2,
+      title:false,
+      area:['500px', '490px'],
+      skin:'logonClass',
+      content:['http://192.168.0.11:84/front/gcr/%E7%99%BB%E5%BD%95/logon.html','no'],
+      yes:function(index,layero){
+        layer.close(index);
+      }
+    });
+  });
+    })
+  </script>
+</head>
+<div class="head-wrapper">
+    <div class="header middle clearfix">
+      <a href="./首页.html" class="logo"><img  src="../images/logo.png" alt=""></a>
+      <div class="select-box">
+        <ul class="build-result" style="width: 286px; display: none;">
+          <li><a href="javascript:;" data-val="1">北京</a></li>
+          <li><a href="javascript:;" data-val="2">北京</a></li>
+          <li><a href="javascript:;" data-val="3">北京</a></li>
+          <li><a href="javascript:;" data-val="4">北京</a></li>
+        </ul>
+        <span class="select-title hook-select">郑州</span>
+        <input type="hidden" name="yss" id="yss" value="1">
+        <i class="hook-select arrow-bottom"></i>
+      </div>
+      <ul class="nav clearfix w1">
+        <li><a class="on" href="首页.html">首页</a></li>
+        <li><a href="./房屋列表.html">立即找房</a></li>
+        <li><a href="../gcr/%E5%9C%B0%E5%9B%BE%E6%89%BE%E6%88%BF/map.html">地图找房</a></li>
+        <li><a href="./精选美屋.html">主题美屋</a></li>
+      </ul>
+      <div class="others pull-right">
+        <a class="housin" href="../gcr/%E6%88%BF%E4%B8%9C%E5%85%A5%E9%A9%BB/index.html" >房东入驻</a>
+        <a class="log housin" href="javascript:void(0);" >登录</a>
+        <!-- <a href="../gcr/%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C/register.html" >注册</a> -->
+      </div>
+    </div>
+  </div>
+  <div class="house-photo">
+    <div class="crumbs">
+      <a href="">大鱼租房</a>&nbsp;>&nbsp;<span >立即找房</span>
+    </div>
+    <div class="photos clearfix">
+      <div class="img-box clearfix">
+        <img class="img2" src="../images/02.jpg" alt="">
+        <img class="img2" src="../images/03.jpg" alt="">
+        <img class="img2" src="../images/03.jpg" alt="">
+        <img class="img2" src="../images/02.jpg" alt="">
+        <div class="more-picture no-wrap">
+          <a target="_self" id="picture" href="javascript:void(0)">查看更多68张图片</a>
+        </div>
+      </div>
+      <div class="text-box">
+        <div class="content">
+          <p class="price"><strong>1680</strong>元/月 <a class="sp normal text-under" href="javascript:void(0);" id="question"><!-- <i class="icon icon-ques" id="question"></i> -->付款方式</a></p>
+          <p class="title no-wrap">【合租】海马公园5居室-主卧</p>
+          <p class="addr"><a href="" class="icon icon-map4"></a><span class="area">郑东新区平安大道西200米</span><!-- &nbsp;&nbsp;&nbsp;&nbsp;<span class="street">平安大道西200米</span> --></p>
+          <a href="" class="map" id="classMap">交通地图</a>
+          <a href="" class="map" id="classjie">周边街景</a>
+          <div class="clearfix tags">
+            <span class="no-wrap">免费保洁</span>
+            <span class="no-wrap">免费wifi</span>
+            <span class="no-wrap">已往2人</span>
+          </div>
+          <p class="others"><span>面积：</span><span>27㎡</span></p>
+          <p class="others"><span>类型：</span><span>主卧</span></p>
+          <p class="others"><span>楼层：</span><span>15/30</span></p>
+          <p class="others"><span>朝向：</span><span>朝南</span></p>
+          <p class="others"><span>户型：</span><span>3室2厅1卫</span></p>
+          <p class="others"><span>小区：</span><span><a href="./小区详情.html" class="text-under">苏荷小区</a></span></p>
+          <!-- <p class="sp"><i class="icon icon-shi"></i>大鱼管家亲自上门拍摄，我们承诺100%真房源</p> -->
+        </div>
+        <div class="text-bottom">
+          <div class="btns">
+            <div class="btn zx">
+              <!-- <span class="font-12">电话预约</span> -->
+              <p class="a">400 - 0371- 921</p>
+              <p class="b">服务时间：9：00 - 21：00</p>
+            </div>
+            <a href="javascript:layerOpen('./预约看房.html',631)" class="btn icon kf">我要看房</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class="clearfix tab" id="tabBar">
+    <li class="on">房源详情</li>
+        <li>房间信息</li>
+        <li>位置交通</li>
+        <li>周边配套</li>
+        <li>同小区房源</li>
+        <li>周边小区</li>
+  </ul>
+  <div class="fixbar" id="fixbar">
+    <div class="fixbar-wrapper clearfix">
+      <ul class="clearfix tab">
+        <li class="on">房源详情</li>
+        <li>房间信息</li>
+        <li>位置交通</li>
+        <li>周边配套</li>
+        <li>同小区房源</li>
+        <li>周边小区</li>
+      </ul>
+      <div class="btns pull-right">
+        <div class="service-time">
+          <p class="a">400 - 0371- 921</p>
+          <p class="b">服务时间：9：00 - 21：00</p>
+        </div>
+        <a href="javascript:layerOpen('./预约看房.html',631);" class="icon kf">我要看房</a>
+      </div>
+    </div>
+  </div>
+  <div id="room_id_01" class="house-info-title">
+    <div class="line"></div>房源配套
+  </div>
+  <div class="facilities mato">
+    <ul class="clearfix">
+      <li>
+        <i class="icon icon-air-conditioner"></i>
+        <p>空调</p>
+      </li>
+      <li>
+        <i class="icon icon-refrigerator"></i>
+        <p>冰箱</p>
+      </li>
+      <li>
+        <i class="icon icon-wash"></i>
+        <p>洗衣机</p>
+      </li>
+      <li>
+        <i class="icon icon-wardrobe"></i>
+        <p>衣柜</p>
+      </li>
+      <li>
+        <i class="icon icon-bed"></i>
+        <p>床</p>
+      </li>
+      <li>
+        <i class="icon icon-desk"></i>
+        <p>书桌</p>
+      </li>
+      <li>
+        <i class="icon icon-chair"></i>
+        <p>椅子</p>
+      </li>
+      <li>
+        <i class="icon icon-wifi"></i>
+        <p>wifi</p>
+      </li>
+      <li>
+        <i class="icon icon-washroom"></i>
+        <p>卫生间</p>
+      </li>
+      <li>
+        <i class="icon icon-bay-window"></i>
+        <p>阳台</p>
+      </li>
+      <li>
+        <i class="icon icon-balcony"></i>
+        <p>飘窗</p>
+      </li>
+    </ul>
+  </div>
+  <div id="room_id_01" class="house-info-title">
+    <div class="line"></div>房间配套
+  </div>
+  <div class="facilities mato">
+    <ul class="clearfix">
+      <li>
+        <i class="icon icon-air-conditioner"></i>
+        <p>空调</p>
+      </li>
+      <li>
+        <i class="icon icon-refrigerator"></i>
+        <p>冰箱</p>
+      </li>
+      <li>
+        <i class="icon icon-wash"></i>
+        <p>洗衣机</p>
+      </li>
+      <li>
+        <i class="icon icon-wardrobe"></i>
+        <p>衣柜</p>
+      </li>
+      <li>
+        <i class="icon icon-bed"></i>
+        <p>床</p>
+      </li>
+      <li>
+        <i class="icon icon-desk"></i>
+        <p>书桌</p>
+      </li>
+      <li>
+        <i class="icon icon-chair"></i>
+        <p>椅子</p>
+      </li>
+      <li>
+        <i class="icon icon-wifi"></i>
+        <p>wifi</p>
+      </li>
+      <li>
+        <i class="icon icon-washroom"></i>
+        <p>卫生间</p>
+      </li>
+      <li>
+        <i class="icon icon-bay-window"></i>
+        <p>阳台</p>
+      </li>
+      <li>
+        <i class="icon icon-balcony"></i>
+        <p>飘窗</p>
+      </li>
+      <li>
+        <i class="icon icon-television"></i>
+        <p>电视</p>
+      </li>
+      <li>
+        <i class="icon icon-smoke"></i>
+        <p>油烟机</p>
+      </li>
+      <li>
+        <i class="icon icon-sofa"></i>
+        <p>沙发</p>
+      </li>
+      <li>
+        <i class="icon icon-table"></i>
+        <p>餐桌</p>
+      </li>
+      <li>
+        <i class="icon icon-oven"></i>
+        <p>微波炉</p>
+      </li>
+      <li>
+        <i class="icon icon-gas"></i>
+        <p>燃气灶</p>
+      </li>
+      <li>
+        <i class="icon icon-furnace"></i>
+        <p>电磁炉</p>
+      </li>
+      <li>
+        <i class="icon icon-heater"></i>
+        <p>热水器</p>
+      </li>
+      <li>
+        <i class="icon icon-heating"></i>
+        <p>暖器</p>
+      </li>
+    </ul>
+  </div>
+  <div id="room_id_02" class="house-info-title">
+    <div class="line"></div>服务信息
+  </div>
+  <div class="service mato">
+    <div class="fy clearfix">
+      <img src="../images/l1.png" class="pull-left"  alt="">
+      <div class="pull-right">共86套房源<a target="_blank" href="品牌公寓.html"><i class="icon arrow-r"></i></a></div>
+      <ul class="clearfix" style="margin-top:13px;">
+        <li class="">免费保洁</li>
+        <li class="">及时维修</li>
+        <li class="">房租分期</li>
+        <li class="">手机交租</li>
+      </ul>
+      
+    </div>
+  </div>
+  <div id="room_id_03" class="house-info-title hook-area">
+    <div class="line"></div>房间信息
+  </div>
+  <div class="rooms-detail mato">
+    <ul class="clearfix rooms">
+      <li class="item">
+        <div class="left">
+          <p class="name no-wrap">房间A&nbsp;-&nbsp;主卧</p>
+          <p class="txt no-wrap">面积：&nbsp;-&nbsp;26㎡</p>
+          <p class="txt no-wrap">朝向：&nbsp;-&nbsp;南</p>
+        </div>
+        <div class="center"><p>当前</p><p>房源</p></div>
+        <div class="right">
+          <p class="state">未出租</p>
+          <p><strong>1200</strong>元/月</p>
+        </div>
+      </li>
+      <li class="item">
+        <div class="left">
+          <p class="name no-wrap">房间A&nbsp;-&nbsp;主卧</p>
+          <p class="txt no-wrap">面积：&nbsp;-&nbsp;26㎡</p>
+          <p class="txt no-wrap">朝向：&nbsp;-&nbsp;南</p>
+        </div>
+        <div class="center icon icon-woman"></div>
+        <div class="right">
+          <p class="state disable">已出租</p>
+          <p><strong>1200</strong>元/月</p>
+        </div>
+      </li>
+      <li class="item">
+        <div class="left">
+          <p class="name no-wrap">房间A&nbsp;-&nbsp;主卧</p>
+          <p class="txt no-wrap">面积：&nbsp;-&nbsp;26㎡</p>
+          <p class="txt no-wrap">朝向：&nbsp;-&nbsp;南</p>
+        </div>
+        <div class="center icon icon-man"></div>
+        <div class="right">
+          <p class="state disable">已出租</p>
+          <p><strong>1200</strong>元/月</p>
+        </div>
+      </li>
+      <li class="item">
+        <div class="left">
+          <p class="name no-wrap">房间A&nbsp;-&nbsp;主卧</p>
+          <p class="txt no-wrap">面积：&nbsp;-&nbsp;26㎡</p>
+          <p class="txt no-wrap">朝向：&nbsp;-&nbsp;南</p>
+        </div>
+        <div class="center icon icon-secret"></div>
+        <div class="right">
+          <p class="state disable">已出租</p>
+          <p><strong>1200</strong>元/月</p>
+        </div>
+      </li>
+      <li class="item">
+        <div class="left">
+          <p class="name no-wrap">房间A&nbsp;-&nbsp;主卧</p>
+          <p class="txt no-wrap">面积：&nbsp;-&nbsp;26㎡</p>
+          <p class="txt no-wrap">朝向：&nbsp;-&nbsp;南</p>
+        </div>
+        <div class="center"><p>当前</p><p>房源</p></div>
+        <div class="right">
+          <p class="state">未出租</p>
+          <p><strong>1200</strong>元/月</p>
+        </div>
+      </li>
+      <li class="item">
+        <div class="left">
+          <p class="name no-wrap">房间A&nbsp;-&nbsp;主卧</p>
+          <p class="txt no-wrap">面积：&nbsp;-&nbsp;26㎡</p>
+          <p class="txt no-wrap">朝向：&nbsp;-&nbsp;南</p>
+        </div>
+        <div class="center icon icon-woman"></div>
+        <div class="right">
+          <p class="state disable">已出租</p>
+          <p><strong>1200</strong>元/月</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="room_id_04" class="house-info-title hook-area">
+    <div class="line"></div>位置交通
+  </div>
+  <div class="peripheral mato clearfix">
+    <div class="left">
+      <div class="map" id="map"></div>
+      <ul class="shortcut" id="shortcut">
+        <li>
+          <i class="icon icon-subway"></i>
+          <p>交通</p>
+        </li>
+        <li>
+          <i class="icon icon-food"></i>
+          <p>餐饮</p>
+        </li>
+        <li>
+          <i class="icon icon-shopping"></i>
+          <p>购物</p>
+        </li>
+        <li>
+          <i class="icon icon-bank"></i>
+          <p>银行</p>
+        </li>
+        <li>
+          <i class="icon icon-scenery"></i>
+          <p>景点</p>
+        </li>
+        <li>
+          <i class="icon icon-market"></i>
+          <p>超市</p>
+        </li>
+        <li>
+          <i class="icon icon-hospital"></i>
+          <p>医院</p>
+        </li>
+        <li>
+          <i class="icon icon-train"></i>
+          <p>火车站</p>
+        </li>
+      </ul>
+      
+    </div>
+    <div class="right">
+      <div id="sa_0" class="station sa_sta">
+        <p><a data-name='sub' href="" class="sub on">公交站</a><a href="" data-name='sub' class="sub ">地铁站</a></p>
+        <div id="sa_0_result"></div>
+      </div>
+    </div>
+    <div class="station bord">
+        <p><a href="javascript:void(0)" data-id="1" class="hook-map-go on">到这里去</a><a href="javascript:void(0)" data-id="0" class="hook-map-go">从这里出发</a></p>
+        <div>
+          <input type="text" id="address" class="input" placeholder="请输入有效的地址名称">
+          <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:251px;height:auto; display:none;"></div>
+          <p class="btn-warpper">
+            <input type="button" class="btn hook-liner" value="公交" name="BUS"></input>
+            <input type="button" class="btn hook-liner" value="驾车" name="CAR"></input>
+          </p>
+        </div>
+      <div id="r-result">
+            <h1 class="h1">乘公共交通工具前往 终点 的路线</h1>
+            <div id="accordion">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-link" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          <p class="sub-tit-small">地铁1号线</p>
+          <p>4.0&nbsp;公里&nbsp;&nbsp;|&nbsp;&nbsp;20&nbsp;分钟&nbsp;&nbsp;|&nbsp;&nbsp;步行1.0公里</p>
+        </div>
+      </div>
+      <div id="collapseOne" class="collapse show">
+        <div class="card-block">
+          <p class="sub-cont-p"><i class="fa fa-circle-thin green"></i>起点</p>
+          <p class="sub-cont-p"><i class="fa fa-blind"></i>步行约800米，到达王府井</p>
+          <p class="sub-cont-p"><i class="fa fa-bus"></i>乘坐地铁1号线，经过3站，到达西单</p>
+          <p class="sub-cont-p"><i class="fa fa-circle-thin red"></i>终点</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="collapsed card-link" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+        <p class="sub-tit-small">夜1路</p>
+        <p>4.0&nbsp;公里&nbsp;&nbsp;|&nbsp;&nbsp;20&nbsp;分钟&nbsp;&nbsp;|&nbsp;&nbsp;步行1.0公里</p>
+      </div>
+      </div>
+      <div id="collapseTwo" class="collapse">
+        <div class="card-block">
+          <p class="sub-cont-p"><i class="fa fa-circle-thin green"></i>起点</p>
+          <p class="sub-cont-p"><i class="fa fa-blind"></i>步行约800米，到达王府井</p>
+          <p class="sub-cont-p"><i class="fa fa-bus"></i>乘坐地铁1号线，经过3站，到达西单</p>
+          <p class="sub-cont-p"><i class="fa fa-circle-thin red"></i>终点</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="collapsed card-link" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          <p class="sub-tit-small">52路</p>
+        <p>4.0&nbsp;公里&nbsp;&nbsp;|&nbsp;&nbsp;20&nbsp;分钟&nbsp;&nbsp;|&nbsp;&nbsp;步行1.0公里</p>
+        </div>
+      </div>
+      <div id="collapseThree" class="collapse">
+        <div class="card-block">
+          <p class="sub-cont-p"><i class="fa fa-circle-thin green"></i>起点</p>
+          <p class="sub-cont-p"><i class="fa fa-blind"></i>步行约800米，到达王府井</p>
+          <p class="sub-cont-p"><i class="fa fa-bus"></i>乘坐地铁1号线，经过3站，到达西单</p>
+          <p class="sub-cont-p"><i class="fa fa-circle-thin red"></i>终点</p>
+        </div>
+      </div>
+    </div>
+  </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div id="room_id_05" class="house-info-title hook-area">
+    <div class="line"></div>周边配套
+  </div>
+  <div class="bewrite mato">
+    <p><span>附近商圈</span>：&nbsp;&nbsp;&nbsp;可以直达的商圈有：二七万达、火车站、二七广场</p>
+    <p><span>此房特别</span>：&nbsp;&nbsp;&nbsp;适合主要目标租客群来源：上班族</p>
+    <p><span>公交线路</span>：&nbsp;&nbsp;&nbsp;30、11、34、99、203、204、287、322、b23路</p>
+    <p><span>超&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市</span>：&nbsp;&nbsp;&nbsp;西元国际</p>
+    <p><span>菜&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市</span>：&nbsp;&nbsp;&nbsp;楼下就是菜市场</p>
+    <p><span>银&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行</span>：&nbsp;&nbsp;&nbsp;附近有中国工商银行、中国建设银行、郑州银行</p>
+    <p>餐&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;饮</span>：&nbsp;&nbsp;&nbsp;距离合记640米、伊兰轩1.2千米、绿茵阁1.3千米</p>
+    <p>医&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;院</span>：&nbsp;&nbsp;&nbsp;距离郑州中心医院1.9千米、郑州华山医院2.1千米、郑州市中医院2.2千米</p>
+    <p><span>电  &nbsp;影  院</span>：&nbsp;&nbsp;&nbsp;奥斯卡西元影城、星美影院、万达影城</p>
+  </div>
+  <div id="room_id_06" class="house-info-title hook-area">
+    <div class="line"></div>同小区房源
+  </div>
+  <div class="beautiful mt24 clearfix">
+    <ul class="recommend clearfix">
+      <li>
+       <img src="../images/i1.png" alt="">
+       <div class="mongo">
+         <a href="">我要看房</a>
+       </div>
+        <div class="desc">
+          <p><a href="">滨河花园(紫辰路)4居室-北卧</a></p>
+          <p><span class="no-wrap">郑大一附院</span><span class="no-wrap">丹尼斯购物</span><span class="no-wrap">出门公交</span></p>
+          <div class="price">¥<strong>1280</strong>/月</div>
+        </div>
+      </li>
+      <li>
+        <img src="../images/i1.png" alt="">
+        <div class="mongo">
+         <a href="">我要看房</a>
+       </div>
+        <div class="desc">
+          <p><a href="">滨河花园(紫辰路)4居室-北卧</a></p>
+          <p><span class="no-wrap"> 郑大一附院</span><span class="no-wrap">丹尼斯购物</span><span class="no-wrap">出门公交</span></p>
+          <div class="price">¥<strong>1280</strong>/月</div>
+        </div>
+      </li>
+      <li>
+        <img src="../images/i1.png" alt="">
+        <div class="mongo">
+         <a href="">我要看房</a>
+       </div>
+        <div class="desc">
+          <p><a href="">滨河花园(紫辰路)4居室-北卧</a></p>
+          <p><span class="no-wrap"> 郑大一附院</span><span class="no-wrap">丹尼斯购物</span><span class="no-wrap">出门公交</span></p>
+          <div class="price">¥<strong>1280</strong>/月</div>
+        </div>
+      </li>
+      <li>
+        <img src="../images/i1.png" alt="">
+        <div class="mongo">
+         <a href="">我要看房</a>
+       </div>
+        <div class="desc">
+          <p><a href="">滨河花园(紫辰路)4居室-北卧</a></p>
+          <p><span class="no-wrap"> 郑大一附院</span><span class="no-wrap">丹尼斯购物</span><span class="no-wrap">出门公交</span></p>
+          <div class="price">¥<strong>1280</strong>/月</div>
+        </div>
+      </li>
+      <li>
+        <img src="../images/i1.png" alt="">
+        <div class="mongo">
+         <a href="">我要看房</a>
+       </div>
+        <div class="desc">
+          <p><a href="">滨河花园(紫辰路)4居室-北卧</a></p>
+          <p><span class="no-wrap"> 郑大一附院</span><span class="no-wrap">丹尼斯购物</span><span class="no-wrap">出门公交</span></p>
+          <div class="price">¥<strong>1280</strong>/月</div>
+        </div>
+      </li>
+      <li>
+        <img src="../images/i1.png" alt="">
+        <div class="mongo">
+         <a href="">我要看房</a>
+       </div>
+        <div class="desc">
+          <p><a href="">滨河花园(紫辰路)4居室-北卧</a></p>
+          <p><span class="no-wrap"> 郑大一附院</span><span class="no-wrap">丹尼斯购物</span><span class="no-wrap">出门公交</span></p>
+          <div class="price">¥<strong>1280</strong>/月</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="room_id_07" class="house-info-title mt20 hook-area">
+    <div class="line"></div>周边小区
+  </div>
+  <div class="beautiful mt24 mb24 clearfix">
+    <ul class="recommend clearfix">
+      <li>
+        <a href="./小区详情.html" class="pos-rel">
+          <img src="../images/i1.png" alt="">
+          <div class="map-desc-name">
+            <i class="icon icon-map3"></i><span>商鼎路与七里河路交叉口</span>
+          </div>
+        </a>
+        <div class="desc">
+          <p><a href="./小区详情.html">滨河花园(紫辰路)4居室-北卧</a></p>
+          <p><span class="no-wrap">郑大一附院</span><span class="no-wrap">丹尼斯购物</span><span class="no-wrap">出门公交</span></p>
+          <div class="price">¥<strong>1280</strong>/月起</div>
+        </div>
+      </li>
+      <li>
+        <a href="./小区详情.html" class="pos-rel">
+          <img src="../images/i1.png" alt="">
+          <div class="map-desc-name">
+            <i class="icon icon-map3"></i><span>商鼎路与七里河路交叉口</span>
+          </div>
+        </a>
+        <div class="desc">
+          <p><a href="./小区详情.html">滨河花园(紫辰路)4居室-北卧</a></p>
+          <p><span class="no-wrap">郑大一附院</span><span class="no-wrap">丹尼斯购物</span><span class="no-wrap">出门公交</span></p>
+          <div class="price">¥<strong>1280</strong>/月起</div>
+        </div>
+      </li>
+      <li>
+        <a href="./小区详情.html" class="pos-rel">
+          <img src="../images/i1.png" alt="">
+          <div class="map-desc-name">
+            <i class="icon icon-map3"></i><span>商鼎路与七里河路交叉口</span>
+          </div>
+        </a>
+        <div class="desc">
+          <p><a href="./小区详情.html">滨河花园(紫辰路)4居室-北卧</a></p>
+          <p><span class="no-wrap">郑大一附院</span><span class="no-wrap">丹尼斯购物</span><span class="no-wrap">出门公交</span></p>
+          <div class="price">¥<strong>1280</strong>/月起</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="footer">
+      <div class="mato">
+        <div class="fo-content">
+          <div class="clearfix">
+            <div class="fo-left pull-left">
+              <img class="fo-logo" src="../images/logo_03.png" alt="">
+              <p class="fo-serve">客服电话</p>
+              <p class="fo-phone">
+                <span>400-0371-921</span>
+                <span>0371-86680207/801</span>
+              </p>
+              <p class="fo-serve">商务合作</p>
+              <p>
+                <span>QQ：465896343</span>
+                <span>Email：monph@monph.coml</span>
+              </p>
+            </div>
+            <div class="fo-center pull-left clearfix">
+              <ul>
+                <li class="fo-title">帮助中心</li>
+                <li><a href="http://192.168.0.11:84/front/gcr/%E6%88%BF%E4%B8%9C%E5%85%A5%E9%A9%BB/index.html">房东入驻</a></li>
+                <li><a href="http://192.168.0.11:84/front/gcr/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC/about.html">常见问题</a></li>
+                <li><a href="http://192.168.0.11:84/front/gcr/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC/about.html">网站地图</a></li>
+              </ul>
+              <ul>
+                <li class="fo-title">关于我们</li>
+                <li><a href="http://192.168.0.11:84/front/gcr/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC/about.html">关于大鱼</a></li>
+                <li><a href="http://192.168.0.11:84/front/gcr/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC/about.html">加入我们</a></li>
+                <li><a href="http://192.168.0.11:84/front/gcr/%E6%88%BF%E4%B8%9C%E5%85%A5%E9%A9%BB/about.html">商务合作</a></li>
+                <li><a href="http://192.168.0.11:84/front/gcr/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC/about.html">隐私条款</a></li>
+              </ul>
+            </div>
+            <div class="fo-right pull-left">
+              <p class="downlode">APP下载</p>
+              <div class="fo-code clearfix">
+                <img class="pull-left" src="../images/code.png" alt="">
+                <div class="pull-left">
+                  <a class="active" href="##">ios下载</a>
+                  <a href="##">android下载</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="copyright">Copyright 2017 大鱼pms 版权所有 豫ICP备17006980号-1</p>
+        </div>
+      </div>
+  </div>
+  <div class="rightBar pr">
+    <ul>
+      <li class="pr hook-pr"><span class="text"> APP<br/>下载</span><i class="icon icon-qr"></i><div class="img">
+      <img src="../images/code.png" width="140" height="140" alt="">
+    </div><div class="square"></div></li>
+      <li><span class="text"> 大鱼<br/>客服</span><i class="icon icon-svc"></i></li>
+      <li onclick="javascript:layerOpen('./意见反馈.html',590);"><span class="text"> 意见<br/>反馈</span><a href="javascript:void(0);" class="icon icon-yj"></a></li>
+      <li onclick="javascript:layerOpen('./求租需求.html',520);"><span class="text"> 求租<br/>需求</span><a href="javascript:void(0);" class="icon icon-yx"></a></li>
+      <li onclick="javascript:scrollToTop();"><span class="text"> 返回<br/>顶部</span><a href="javascript:void(0);" class="icon icon-top"></a></li>
+    </ul>
+    
+  </div>
+
+  <div id="fkfs" class="look-house small">
+    <h5 class="title">付款方式</h5>
+    <table>
+      <tr>
+        <th>方式</th>
+        <th class="noli"><p>租金</p><p>(元/月)</p></th>
+        <th class="noli"><p>押金</p><p>(元)</p></th>
+        <th class="noli"><p>服务费</p><p>(元/月)</p></th>
+      </tr>
+      <tr>
+        <td>月付</td>
+        <td>￥1380</td>
+        <td>￥1380</td>
+        <td>￥1380</td>
+      </tr>
+      <tr>
+        <td>季付</td>
+        <td>￥1380</td>
+        <td>￥1380</td>
+        <td>￥1380</td>
+      </tr>
+      <tr>
+        <td>半年付</td>
+        <td>￥1380</td>
+        <td>￥1380</td>
+        <td>￥1380</td>
+      </tr>
+      <tr>
+        <td>年付</td>
+        <td>￥1380</td>
+        <td>￥1380</td>
+        <td>￥1380</td>
+      </tr>
+    </table>
+  </div>
+  <script src="../js/map.js"></script>
+  <script src="../js/iscroll.js"></script>
+  <script>
+    map_obj.init();//初始化地图
+    map_obj.hint();// 地址搜索
+    map_obj.main('公交站',500,'icon-subway','../img/bus.png');// 搜索附近公交站
+
+  $('#shortcut > li').click(function(){
+      var text = $(this).children('p').text();
+      var cla  = $(this).attr('data-name');
+      var imgs = $(this).attr('data-val');
+      if (cla == 'icon-subway'){
+         text = '公交站';
+      }
+      map_obj.main(text,500,cla,imgs);
+  })
+  
+  $(".go").click(function () {
+    if ($(this).attr('class') != 'on go'){
+      var val = $(this).attr('data-val');
+      $(this).addClass('on go');
+      $(this).siblings('.go').removeClass('on');
+      $('.input').attr('data-val',val);
+    }
+  })
+  function layerOpen(url,height){
+    layer.open({
+        type: 2,
+        title: '',
+        shadeClose: true,
+        skin:'logonClass',
+        maxmin: false, //开启最大化最小化按钮
+        area: ['586px', height+'px'],
+        content: [url]
+      }); 
+  }
+  var x = 10;
+  var y = 20;
+  $(".img-box> img").click(function(){
+    layer.open({
+      type: 2,
+      title: '',
+      shadeClose: true,
+      skin:'logonClass',
+      maxmin: false, //开启最大化最小化按钮
+      area: ['1340px', '759px'],
+      content: ['./图片预览器.html']
+    });
+  });
+  $(".img-box>img").mouseover(function(e){
+      
+    var tooltip = "<div id='tooltip'><img src='"+ this.src +"' alt='产品预览图'/><\/div>"; //创建 div 元素
+    $("body").append(tooltip);  //把它追加到文档中             
+    $("#tooltip")
+      .css({
+        "top": (e.pageY+y) + "px",
+        "left":  (e.pageX+x)  + "px"
+      }).show("fast");    //设置x坐标和y坐标，并且显示
+    }).mouseout(function(){
+      
+    $("#tooltip").remove();  //移除 
+    }).mousemove(function(e){
+    $("#tooltip")
+      .css({
+        "top": (e.pageY+y) + "px",
+        "left":  (e.pageX+x)  + "px"
+      });
+  });
+  $('#question').on('mouseenter', function() {
+    $('#fkfs').show().addClass('scale-animation').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(){
+      $(this).removeClass('scale-animation');
+    });
+  });
+  $('#question').on('mouseleave', function() {
+    $('#fkfs').show().addClass('scale-animation-leave').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(){
+      $(this).removeClass('scale-animation-leave');
+      $('#fkfs').hide();
+    });
+  });
+  $('#picture').click(function(){
+    layer.open({
+      type: 2,
+      title: '',
+      shadeClose: true,
+      skin:'logonClass',
+      maxmin: false, //开启最大化最小化按钮
+      area: ['1340px', '759px'],
+      content: ['./图片预览器.html']
+    });
+  });
+  $('#classjie').on('click',function(e){
+    e.preventDefault();
+      layer.open({
+      type: 2,
+      title: '',
+      shadeClose: true,
+      skin:'logonClass',
+      maxmin: false, //开启最大化最小化按钮
+      area: ['1420px', '850px'],
+      content: ['./jiejing.html','no']
+    });
+  })
+  $('#classMap').on('click',function(e){
+    e.preventDefault();
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
+    this.timer = setTimeout(function(){
+      var delta = $('#room_id_04').offset().top;
+      $('html,body').animate({
+        scrollTop: (delta - 70) + 'px'
+      },{
+        duration: 500,
+        easing: 'easeInSine'
+      });
+    },17);
+  });
+  function scrollToTop () {
+    $('html,body').animate({
+        scrollTop: 0 + 'px'
+    },{
+      duration: 500,
+      easing: 'easeInSine'
+    });
+  }
+  </script>
+</body>
+</html>

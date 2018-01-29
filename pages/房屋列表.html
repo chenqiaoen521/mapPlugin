@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name=renderer content=webkit>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="shortcut icon" href="" type="image/x-icon" />
+  <link rel="icon" type="image/x-icon" href="">
+  <link rel="stylesheet" href="../../static/front/css/wz/autocomplete.css">
+  <link rel="stylesheet" href="../../static/front/css/wz/rs.css">
+  <link rel="stylesheet" href="../../static/front/css/wz/zf.css">
+  <script src="../../static/front/js/jquery.js"></script>
+  <script src="../../static/front/js/jquery.validate.js"></script>
+  <script src="../../static/front/js/jquery.validate.messages_cn.js"></script>
+  <script src="../../static/front/js/layer/layer.js"></script>
+  <script src="../../static/front/js/chooseManager.js"></script>
+  <script src="../../static/front/js/gcr/paging.js"></script>
+  <script src="../../static/front/js/autocomplete.js"></script>
+  <title>大鱼 - 专业的一站式公寓PMS云平台</title>
+  <meta name="description" content="专业的一站式公寓PMS云平台">
+  <script>
+    $(function(){
+      $("#pages").paging({
+      pageNo:1,
+      totalPage: 9,
+      totalSize: 300,
+      callback: function(num) {}
+    })
+/***       模糊查询加下拉             ****/
+      var data = [
+       {label:'金水区A',value:'a','alias':'位置',isArea:1,placeholder:'共6套'},//1位置
+       {label:'金水区B',value:'b','alias':'位置',isArea:1},
+       {label:'金区D',value:'d','alias':'商圈',isArea:2},//2 商圈
+       {label:'金区d',value:'d','alias':'商圈',isArea:2},
+       {label:'小区C',value:'c','alias':'小区',isArea:0},//0 小区
+       {label:'小区D',value:'c','alias':'小区',isArea:0},
+       {label:'小区E',value:'c','alias':'小区',isArea:0},
+       {label:'小区F',value:'c','alias':'小区',isArea:0},
+       {label:'小区G',value:'c','alias':'小区',isArea:0},
+       {label:'小区H',value:'c','alias':'小区',isArea:0},
+       {label:'小区I',value:'c','alias':'小区',isArea:0}
+     ];
+     var arr1 = [],arr2 = [],arr3= [];
+      $.each(data,function(i,obj){
+        if(obj.isArea ===1){
+          arr1.push(data[i]);
+        } else if (obj.isArea ===2) {
+          arr2.push(data[i]);
+        } else {
+          arr3.push(data[i]);
+        }
+      });
+      arr1[0].tabIndex = 1;
+      arr2[0].tabIndex = 1;
+      arr3[0].tabIndex = 1;
+      data = arr1.concat(arr2,arr3);
+     $('#search').autocomplete({
+        minLength:1,
+        source:data,/********改成函数可以AJAX************/
+        focus: function( event, ui ) {
+          if(!ui.item || !ui.item.label) return;
+          $('#search').val(ui.item.label);
+        },
+        open: function (e,ui) {
+          var li = $( "<li class='clearfix ui-menu-item'>" )
+        .append( "<span><a class='ui-menu-item-wrapper'>位置在：</a><strong>"+$('#search').val()+"</strong>附近的公寓</span>" );
+        var li2 = $( "<li class='clearfix ui-menu-item'>" )
+        .append( "<span><a class='ui-menu-item-wrapper'>名称含：</a><strong>"+$('#search').val()+"</strong>公寓</span>" )
+          $('.ui-autocomplete').prepend(li)
+          $('.ui-autocomplete').prepend(li2)
+        },
+        select: function( event, ui ) {
+          $(this).val(ui.item.label);
+            return false;
+        }
+    })
+    .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+      var temp = item.placeholder ? '<span class="autocom-txt">'+item.placeholder+'<span>' : '';
+      if (!!item.tabIndex) {
+        if(!item.isArea) {
+          return $( "<li style='border-top:1px solid #cccccc;'>" )
+          .append( "<span class='pull-right'> <i class='flag hf'></i>" + item.alias + "</span><a>" + item.label + "</a>"+temp )
+          .appendTo( ul );
+        } else {
+          return $( "<li style='border-top:1px solid #cccccc;'>" )
+        .append( "<span class='pull-right'><i class='flag dt'></i>" + item.alias + "</span><a>" + item.label + "</a>"+temp )
+        .appendTo( ul );
+        }
+      } else if(!item.tabIndex){
+        if(!item.isArea) {
+          return $( "<li>" )
+          .append( "<span class='pull-right'> <i class='flag hf'></i>" + item.alias + "</span><a>" + item.label + "</a>"+temp )
+          .appendTo( ul );
+        } else {
+          return $( "<li>" )
+        .append( "<span class='pull-right'><i class='flag dt'></i>" + item.alias + "</span><a>" + item.label + "</a>"+temp )
+        .appendTo( ul );
+        }
+      }
+    }
+    /***       模糊查询加下拉             ****/
+      /**地铁点击效果*/
+      $('.sub-station>ul>li').click(function(){
+        $(this).siblings('li').each(function(){
+          $(this).children().removeClass('on');
+        });
+        $(this).children().addClass("on")
+      })
+        $('.content').click(function(e){
+          $(e.currentTarget).siblings('.content').each(function(){
+            $(this).children().removeClass('all');
+          })
+          $(e.currentTarget).children().addClass('all');
+        });
+      chooseManager();
+      managerResult();
+      unbind();
+      mouseleaveHide();
+      // 登录页面
+      $('.log').on('click',function(){
+        layer.open({
+          type:2,
+          title:false,
+          area:['500px', '490px'],
+          skin:'logonClass',
+          content:['http://192.168.0.11:84/front/gcr/%E7%99%BB%E5%BD%95/logon.html','no'],
+          yes:function(index,layero){
+            layer.close(index);
+          }
+        });
+      });
+      $('.hook-subway').click(function(){
+        $(this).siblings().removeClass('check');
+        $('.hook-station').hide();
+        $(this).addClass('check');
+        $('#'+$(this).data('subwaykey')).show();
+      });
+      $('.hook-quan').click(function(){
+        $(this).siblings().removeClass('check');
+        $('.hook-sq').hide();
+        $(this).addClass('check');
+        $('#'+$(this).data('subwaykey')).show();
+      });
+      $('.h_tab').click(function(){
+        $('.h_list').hide();
+        var index = $(this).index() - 1;
+        (!!$('.h_list')[index]) && ($('.h_list')[index].style.display = 'block');
+      });
+      $('.con_p').click(function(e){
+        e.preventDefault();
+        $('.h_list').hide();
+      });
+      $('.sortby .sort').click(function(e){
+        $(this).siblings().removeClass('current');
+        $(this).addClass('current');
+        e.preventDefault();
+        e.stopPropagation();
+        var i = $(this).children().eq(0);
+        if(i.hasClass("ii-down")){
+          i.removeClass('ii-down');
+          i.addClass('ii-up');
+        } else {
+          i.removeClass('ii-up');
+          i.addClass('ii-down');
+        }
+      });
+    });
+    
+  </script>
+</head>
+<body class="grey ">
+    <div class="head-wrapper">
+    <div class="header middle clearfix">
+      <a href="./首页.html" class="logo"><img  src="../../static/front/images/logo.png" alt=""></a>
+      <div class="select-box">
+        <ul class="build-result" style="width: 286px; display: none;">
+          <li><a href="javascript:;" data-val="1">北京</a></li>
+          <li><a href="javascript:;" data-val="2">北京</a></li>
+          <li><a href="javascript:;" data-val="3">北京</a></li>
+          <li><a href="javascript:;" data-val="4">北京</a></li>
+        </ul>
+        <span class="select-title hook-select">郑州</span>
+        <input type="hidden" name="yss" id="yss" value="1">
+        <i class="hook-select arrow-bottom"></i>
+      </div>
+      <ul class="nav clearfix w1">
+        <li><a class="on" href="首页.html">首页</a></li>
+        <li><a href="./房屋列表.html">立即找房</a></li>
+        <li><a href="../gcr/%E5%9C%B0%E5%9B%BE%E6%89%BE%E6%88%BF/map.html">地图找房</a></li>
+        <li><a href="./精选美屋.html">主题美屋</a></li>
+      </ul>
+      <div class="others pull-right">
+        <a class="housin" href="../gcr/%E6%88%BF%E4%B8%9C%E5%85%A5%E9%A9%BB/index.html" >房东入驻</a>
+        <a class="log housin" href="javascript:void(0);" >登录</a>
+        <!-- <a href="../gcr/%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C/register.html" >注册</a> -->
+      </div>
+    </div>
+  </div>
+  <div class="mt90">
+    <div class="crumbs">
+      <a href="">大鱼租房</a>&nbsp;>&nbsp;<span >立即找房</span>
+    </div>
+    <div class="search-box container  clearfix">
+      <a href="" class="icon icon-map5"></a>
+      <input type="text" id="search" class="search-input w7" placeholder="请输入区域、商圈或小区名开始找房"><a href="javascript:void(0);"><input type="submit" class="btn-submit btn1" value="开始找房"></a>
+      <a href="../gcr/%E5%9C%B0%E5%9B%BE%E6%89%BE%E6%88%BF/map.html" class="pull-right"><i class="icon icon-map"></i><input type="submit" class="btn-submit btn2" value="地图找房"></a>
+    </div>
+    <div class="conditions">
+      <dl class="clearfix">
+        <dt class="cond-tit"><span>位置：</span></dt>
+        <dd class="cond-wrapper">
+          <span class="content "><a href="javascript:void(0);" class="all">不限</a></span>
+          <span class="content  pr h_tab">
+            <a href="javascript:void(0);">地铁站 <i class="icon icon-pull-down"></i></a>
+          </span>
+          <span class="content  pr h_tab">
+            <a href="javascript:void(0);">行政区 <i class="icon icon-pull-down"></i></a>
+          </span>
+          <span class="content  pr h_tab">
+            <a href="javascript:void(0);">高校 <i class="icon icon-pull-down"></i></a>
+          </span>
+          <div class="pos-filter-show">
+            <div class="clearfix  h_list">
+              <div class="subway_num_list">
+                <ul class="clearfix">
+                  <li data-subwaykey="line_0" class="check hook-subway">
+                  <a href="javascript:void(0);">1号线</a>
+                  </li>
+                  <li data-subwaykey="line_1" class="hook-subway">
+                  <a href="javascript:void(0);">2号线</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="sub-station" >
+                <ul class="clearfix hook-station" id="line_0">
+                  <li class="first">
+                    <a href="javascript:void(0);">
+                      <span class="fist"></span>
+                      <span class="secd">四惠东</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);">
+                      <span class="fist"></span>
+                      <span class="secd">四惠东</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);">
+                      <span class="fist"></span>
+                      <span class="secd">四惠东</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);">
+                      <span class="fist"></span>
+                      <span class="secd">四惠东</span>
+                    </a>
+                  </li>
+                  <li class="last">
+                    <a href="javascript:void(0);">
+                      <span class="fist"></span>
+                      <span class="secd">四惠东</span>
+                    </a>
+                  </li>
+                </ul>
+                <ul class="clearfix none hook-station" id="line_1">
+                  <li class="first">
+                    <a href="javascript:void(0);">
+                      <span class="fist"></span>
+                      <span class="secd">四惠xi</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);">
+                      <span class="fist"></span>
+                      <span class="secd">四惠xi</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);">
+                      <span class="fist"></span>
+                      <span class="secd">四惠xi</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);">
+                      <span class="fist"></span>
+                      <span class="secd">四惠xi</span>
+                    </a>
+                  </li>
+                  <li class="last">
+                    <a href="javascript:void(0);">
+                      <span class="fist"></span>
+                      <span class="secd">四惠xi</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="clearfix  h_list">
+              <div class="subway_num_list">
+                <ul class="clearfix">
+                  <li data-subwaykey="shang_0" class="check hook-quan">
+                  <a href="javascript:void(0);"  >二七</a>
+                  </li>
+                  <li  data-subwaykey="shang_1" class="hook-quan">
+                  <a href="javascript:void(0);">紫金山</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="pos-filter-show">
+                <ul class="clearfix hook-sq" id="shang_0">
+                  <li>
+                    <a href="javascript:void(0);">金水区</a>
+                  </li>
+                  <!-- <li>
+                    <div class="radio-custom radio-primary">
+                      <input id="bbb" type="radio" name="name">
+                      <label for="bbb">金水区</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="radio-custom radio-primary">
+                      <input id="ccc" type="radio" name="name">
+                      <label for="ccc">金水区</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="radio-custom radio-primary">
+                      <input id="ddd" type="radio" name="name">
+                      <label for="ddd">金水区</label>
+                    </div>
+                  </li>
+                  <li class="last">
+                    <div class="radio-custom radio-primary">
+                      <input id="eee" type="radio" name="name">
+                      <label for="eee">金水区</label>
+                    </div>
+                  </li> -->
+                </ul>
+                <ul class="clearfix hook-sq none" id="shang_1">
+                  <li class="first">
+                    <a href="javascript:void(0);">金水区2</a>
+                  </li>
+                  <!-- <li>
+                    <div class="radio-custom radio-primary">
+                      <input id="bbb" type="radio" name="name">
+                      <label for="bbb">金水2区</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="radio-custom radio-primary">
+                      <input id="ccc" type="radio" name="name">
+                      <label for="ccc">金水2区</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="radio-custom radio-primary">
+                      <input id="ddd" type="radio" name="name">
+                      <label for="ddd">金水区</label>
+                    </div>
+                  </li>
+                  <li class="last">
+                    <div class="radio-custom radio-primary">
+                      <input id="eee" type="radio" name="name">
+                      <label for="eee">金水区</label>
+                    </div>
+                  </li> -->
+                </ul>
+              </div>
+            </div>
+            <ul class="clearfix pos-list h_list">
+              <li>
+                <a href="javascript:void(0);">二七区</a>
+              </li>
+              <!-- <li>
+                <div class="radio-custom radio-primary">
+                  <input type="radio" id="aa" name="name">
+                  <label for="aa">二七区</label>
+                </div>
+              </li>
+              <li>
+                <div class="radio-custom radio-primary">
+                  <input id="bb" type="radio" name="name">
+                  <label for="bb">金水区</label>
+                </div>
+              </li> -->
+            </ul>
+            <ul class="clearfix pos-list h_list">
+              <li>
+                <div class="radio-custom radio-primary">
+                  <input id="c" type="radio" name="name">
+                  <label for="c">金水区</label>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </dd>
+      </dl>
+      <dl class="clearfix">
+        <dt class="cond-tit"><span>付款：</span></dt>
+        <dd class="cond-wrapper">
+          <span class="content "><a href="javascript:void(0);" class="all">不限</a></span>
+          <span class="content no-wrap"><a href="javascript:void(0);">付一</a></span>
+          <span class="content no-wrap"><a href="javascript:void(0);">付三</a></span>
+          <span class="content no-wrap"><a href="javascript:void(0);">付六</a></span>
+          <span class="content no-wrap"><a href="javascript:void(0);">付一年</a></span>
+        </dd>
+      </dl>
+      <dl class="clearfix">
+        <dt class="cond-tit"><span>方式：</span></dt>
+        <dd class="cond-wrapper">
+          <span class="content "><a href="javascript:void(0);" class="all">不限</a></span>
+          <span class="content  no-wrap"><a href="javascript:void(0);" >整租</a></span>
+          <span class="content  no-wrap"><a href="javascript:void(0);" >合租</a></span>
+          <span class="content  no-wrap"><a href="javascript:void(0);" >酒店式公寓</a></span>
+        </dd>
+      </dl>
+      <dl class="clearfix">
+        <dt class="cond-tit"><span>户型：</span></dt>
+        <dd class="cond-wrapper">
+          <span class="content "><a href="javascript:void(0);" class="all">不限</a></span>
+          <span class="content  no-wrap"><a href="javascript:void(0);">一室</a></span>
+          <span class="content  no-wrap"><a href="javascript:void(0);">二室</a></span>
+          <span class="content  no-wrap"><a href="javascript:void(0);">三室</a></span>
+          <span class="content  no-wrap"><a href="javascript:void(0);">四室</a></span>
+          <span class="content  no-wrap"><a href="javascript:void(0);">五室</a></span>
+          <span class="content  no-wrap"><a href="javascript:void(0);">五室以上</a></span>
+        </dd>
+      </dl>
+      <dl class="clearfix">
+        <dt class="cond-tit"><span>租金：</span></dt>
+        <dd class="cond-wrapper">
+          <span class="content "><a href="javascript:void(0);" class="all">不限</a></span>
+          <span class="content  no-wrap"><a href="javascript:void(0);">800元以下</a></span>
+          <span class="content  no-wrap"><a href="javascript:void(0);">801-1000元</a></span>
+          <span class="content  no-wrap"><a href="javascript:void(0);">1001-1500元</a></span>
+          <span class="content  no-wrap"><a href="javascript:void(0);">1501-2000元</a></span>
+          <span class="content  no-wrap"><a href="javascript:void(0);">2000元以上</a></span>
+        </dd>
+      </dl>
+      <dl class="clearfix">
+        <dt class="cond-tit"><span>特色：</span></dt>
+        <dd class="cond-wrapper">
+          <span class="content "><a href="javascript:void(0);" class="all">不限</a></span>
+          <span class="content ">
+            <div class="checkbox-custom checkbox-default">
+              <input type="checkbox" id="m_y_j" name="inputCheckboxes">
+              <label for="m_y_j">免押金</label>
+            </div>
+          </span>
+          <span class="content ">
+            <div class="checkbox-custom checkbox-default">
+              <input type="checkbox" id="j_d_t" name="inputCheckboxes">
+              <label for="j_d_t">近地铁</label>
+            </div>
+          </span>
+          <span class="content ">
+            <div class="checkbox-custom checkbox-default">
+              <input type="checkbox" id="d_w" name="inputCheckboxes">
+              <label for="d_w">独卫</label>
+            </div>
+          </span>
+          <span class="content ">
+            <div class="checkbox-custom checkbox-default">
+              <input type="checkbox" id="z_w" name="inputCheckboxes">
+              <label for="z_w">主卧</label>
+            </div>
+          </span>
+          <span class="content ">
+            <div class="checkbox-custom checkbox-default">
+              <input type="checkbox" id="c_n" name="inputCheckboxes">
+              <label for="c_n">朝南</label>
+            </div>
+          </span>
+          <span class="content ">
+            <div class="checkbox-custom checkbox-default">
+              <input type="checkbox" id="f_g_d" name="inputCheckboxes">
+              <label for="f_g_d">非隔断</label>
+            </div>
+          </span>
+          <span class="content ">
+            <div class="checkbox-custom checkbox-default">
+              <input type="checkbox" id="p_c" name="inputCheckboxes">
+              <label for="p_c">飘窗</label>
+            </div>
+          </span>
+          <span class="content">
+            <div class="checkbox-custom checkbox-default">
+              <input type="checkbox" id="n_q" name="inputCheckboxes">
+              <label for="n_q">暖气</label>
+            </div>
+          </span>
+          <span class="content ">
+            <div class="checkbox-custom checkbox-default">
+              <input type="checkbox" id="y_t" name="inputCheckboxes">
+              <label for="y_t">阳台</label>
+            </div>
+          </span>
+        </dd>
+      </dl>
+      <dl class="clearfix">
+        <dt class="cond-tit"><span>入住：</span></dt>
+        <dd class="cond-wrapper">
+          <span class="content "><a href="javascript:void(0);">不限</a></span>
+          <span class="content  no-wrap"><a href="javascript:void(0);" class="all">立即入住</a></span>
+          <span class="content  no-wrap"><a href="javascript:void(0);">一周内入住</a></span>
+          <span class="content  no-wrap"><a href="javascript:void(0);">两周内入住</a></span>
+          <!-- <span class="content  no-wrap pull-right">更多筛选条件 >></span> -->
+        </dd>
+      </dl>
+      <div class="current">
+        <span>当前筛选条件</span>
+        <ul class="clearfix">
+          <li><p>行政区</p><i class="icon icon-close"></i></li>
+          <li><p>二室</p><i class="icon icon-close"></i></li>
+        </ul>
+        <div class="pull-right filter"><a href="javascript:void(0);">清空筛选条件</a></div>
+      </div>
+      <!-- <a href="" class="icon pull-down con_p"></a> -->
+    </div>
+  </div>
+  <div class="list-content">
+    <div class="sortby">
+      <a href="javascript:void(0);" class="on">推荐排序</a>
+      <a href="javascript:void(0);" class="sort ">价格 <i class="ii-down"></i></a>
+      <a href="javascript:void(0);" class="sort ">最新发布 <i class="ii-down"></i></a>
+      <a href="javascript:void(0);" class="pull-right">共 <strong>6532500</strong> 套房源</a>
+    </div>
+    <div class="list clearfix">
+      <div class="list-left">
+        <div class="no-result clearfix img">
+          <img src="../../static/front/images/no-result.png" alt="" class="pull-left">
+          <div class="no-result-txt">
+            <h4>很抱歉，没有找到符合您条件的酒店</h4>
+            <p>建议您适当减少或更改搜索条件 <a href="">重新搜索</a></p>
+          </div>
+        </div>
+        <div class="sortby">
+          <i class="icon icon-zan"></i>
+          <span class="recommend">相关推荐</span>
+          <span class="yzfy">以下为我们为您推荐的优质房源</span>
+        </div>
+        <ul>
+          <li class="list-item clearfix">
+            <img src="../../static/front/images/1.png" alt="">
+            <a href="./房屋详情.html">
+              <div class="mongo">
+                <span>我要看房</span>
+              </div>
+            </a>
+            <div class="list-middle-item middle">
+              <p class="name"><i class="icon icon-mia"></i><i class="icon icon-cu"></i><a href="./房屋详情.html">【合租】海马公园5居室-主卧</a></p>
+              <p class="desc"><a href="" class="icon icon-map6"></a><span>金水区</span>&nbsp;&nbsp;&nbsp;<span>梧桐街与雪松路交汇处</span><!-- <a href="" class="map">交通地图</a> --></p>
+              <p class="delta">
+                <i class="icon icon-arrow mr8"></i>
+                <span class="distance">距离地铁1号线500米</span>
+                <span class="ml20">小区公寓</span>
+              </p>
+              <p class="flag">
+                <span>免费保洁</span>
+                <span>免费wifi</span>
+                <span>已住两人</span>
+              </p>
+              <div class="detail">
+                <p class="name price"><strong>1250</strong>&nbsp;元/&nbsp;月</p>
+              </div>
+            </div>
+          </li>
+          <li class="list-item clearfix">
+            <img src="../../static/front/images/34.jpg" alt="">
+            <a href="./房屋详情.html">
+              <div class="mongo">
+                <span>我要看房</span>
+              </div>
+            </a>
+            <div class="list-middle-item middle">
+              <p class="name"><i class="icon icon-mia"></i><i class="icon icon-cu"></i><a href="./房屋详情.html">【合租】海马公园5居室-主卧</a></p>
+              <p class="desc"><a href="" class="icon icon-map6"></a><span>金水区</span>&nbsp;&nbsp;&nbsp;<span>梧桐街与雪松路交汇处</span><!-- <a href="" class="map">交通地图</a> --></p>
+              <p class="delta">
+                <i class="icon icon-arrow mr8"></i>
+                <span class="distance">距离地铁1号线500米</span>
+                <span class="ml20">小区公寓</span>
+              </p>
+              <p class="flag">
+                <span>免费保洁</span>
+                <span>免费wifi</span>
+                <span>已住两人</span>
+              </p>
+              <div class="detail">
+                <p class="name price"><strong>1250元</strong>&nbsp;/&nbsp;月</p>
+              </div>
+            </div>
+          </li>
+          <li class="list-item clearfix">
+            <img src="../../static/front/images/1.png" alt="">
+            <a href="./房屋详情.html">
+              <div class="mongo">
+                <span>我要看房</span>
+              </div>
+            </a>
+            <div class="list-middle-item middle">
+              <p class="name"><i class="icon icon-mia"></i><i class="icon icon-cu"></i><a href="./房屋详情.html">【合租】海马公园5居室-主卧</a></p>
+              <p class="desc"><a href="" class="icon icon-map6"></a><span>金水区</span>&nbsp;&nbsp;&nbsp;<span>梧桐街与雪松路交汇处</span><!-- <a href="" class="map">交通地图</a> --></p>
+              <p class="delta">
+                <i class="icon icon-arrow mr8"></i>
+                <span class="distance">距离地铁1号线500米</span>
+                <span class="ml20">小区公寓</span>
+              </p>
+              <p class="flag">
+                <span>免费保洁</span>
+                <span>免费wifi</span>
+                <span>已住两人</span>
+              </p>
+              <div class="detail">
+                <p class="name price"><strong>1250元</strong>&nbsp;/&nbsp;月</p>
+              </div>
+            </div>
+          </li>
+          <li class="list-item clearfix">
+            <img src="../../static/front/images/1.png" alt="">
+            <a href="./房屋详情.html">
+              <div class="mongo">
+                <span>我要看房</span>
+              </div>
+            </a>
+            <div class="list-middle-item middle">
+              <p class="name"><i class="icon icon-mia"></i><i class="icon icon-cu"></i><a href="./房屋详情.html">【合租】海马公园5居室-主卧</a></p>
+              <p class="desc"><a href="" class="icon icon-map6"></a><span>金水区</span>&nbsp;&nbsp;&nbsp;<span>梧桐街与雪松路交汇处</span><!-- <a href="" class="map">交通地图</a> --></p>
+              <p class="delta">
+                <i class="icon icon-arrow mr8"></i>
+                <span class="distance">距离地铁1号线500米</span>
+                <span class="ml20">小区公寓</span>
+              </p>
+              <p class="flag">
+                <span>免费保洁</span>
+                <span>免费wifi</span>
+                <span>已住两人</span>
+              </p>
+              <div class="detail">
+                <p class="name price"><strong>1250元</strong>&nbsp;/&nbsp;月</p>
+              </div>
+            </div>
+          </li>
+          <li class="list-item clearfix">
+            <img src="../../static/front/images/1.png" alt="">
+            <a href="./房屋详情.html">
+              <div class="mongo">
+                <span>我要看房</span>
+              </div>
+            </a>
+            <div class="list-middle-item middle">
+              <p class="name"><i class="icon icon-mia"></i><i class="icon icon-cu"></i><a href="./房屋详情.html">【合租】海马公园5居室-主卧</a></p>
+              <p class="desc"><a href="" class="icon icon-map6"></a><span>金水区</span>&nbsp;&nbsp;&nbsp;<span>梧桐街与雪松路交汇处</span><!-- <a href="" class="map">交通地图</a> --></p>
+              <p class="delta">
+                <i class="icon icon-arrow mr8"></i>
+                <span class="distance">距离地铁1号线500米</span>
+                <span class="ml20">小区公寓</span>
+              </p>
+              <p class="flag">
+                <span>免费保洁</span>
+                <span>免费wifi</span>
+                <span>已住两人</span>
+              </p>
+              <div class="detail">
+                <p class="name price"><strong>1250元</strong>&nbsp;/&nbsp;月</p>
+              </div>
+            </div>
+          </li>
+          <div id="pages" class="pages pull-right">
+          </div>
+        </ul>
+      </div>
+      <div class="list-right">
+        <ul>
+          <li>
+            <a href="">
+              <img src="../../static/front/images/81.jpg" alt="">
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="../../static/front/images/81.jpg" alt="">
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="../../static/front/images/81.jpg" alt="">
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="../../static/front/images/81.jpg" alt="">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+      <div class="mato">
+        <div class="fo-content">
+          <div class="clearfix">
+            <div class="fo-left pull-left">
+              <img class="fo-logo" src="../../static/front/images/logo_03.png" alt="">
+              <p class="fo-serve">客服电话</p>
+              <p class="fo-phone">
+                <span>400-0371-921</span>
+                <span>0371-86680207/801</span>
+              </p>
+              <p class="fo-serve">商务合作</p>
+              <p>
+                <span>QQ：465896343</span>
+                <span>Email：monph@monph.coml</span>
+              </p>
+            </div>
+            <div class="fo-center pull-left clearfix">
+              <ul>
+                <li class="fo-title">帮助中心</li>
+                <li><a href="http://192.168.0.11:84/front/gcr/%E6%88%BF%E4%B8%9C%E5%85%A5%E9%A9%BB/index.html">房东入驻</a></li>
+                <li><a href="http://192.168.0.11:84/front/gcr/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC/about.html">常见问题</a></li>
+                <li><a href="http://192.168.0.11:84/front/gcr/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC/about.html">网站地图</a></li>
+              </ul>
+              <ul>
+                <li class="fo-title">关于我们</li>
+                <li><a href="http://192.168.0.11:84/front/gcr/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC/about.html">关于大鱼</a></li>
+                <li><a href="http://192.168.0.11:84/front/gcr/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC/about.html">加入我们</a></li>
+                <li><a href="http://192.168.0.11:84/front/gcr/%E6%88%BF%E4%B8%9C%E5%85%A5%E9%A9%BB/about.html">商务合作</a></li>
+                <li><a href="http://192.168.0.11:84/front/gcr/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC/about.html">隐私条款</a></li>
+              </ul>
+            </div>
+            <div class="fo-right pull-left">
+              <p class="downlode">APP下载</p>
+              <div class="fo-code clearfix">
+                <img class="pull-left" src="../../static/front/images/code.png" alt="">
+                <div class="pull-left">
+                  <a class="active" href="##">ios下载</a>
+                  <a href="##">android下载</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="copyright">Copyright 2017 大鱼pms 版权所有 豫ICP备17006980号-1</p>
+        </div>
+      </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name=renderer content=webkit>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="shortcut icon" href="../../static/image/favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/x-icon" href="../../static/front/images/favicon.ico">
+  <link rel="stylesheet" href="../../static/front/css/wz/rs.css">
+  <link rel="stylesheet" href="../../static/front/css/wz/zf.css">
+  <script src="../../static/front/js/jquery.js"></script>
+  <title>大鱼 - 专业的一站式公寓PMS云平台</title>
+  <meta name="description" content="专业的一站式公寓PMS云平台">
+</head>
+<body>
+  <div class="image-ligtings">
+    <div class="image-wrapper clearfix">
+      <div id="slider" class="left pull-left">
+        <ul class="img-container clearfix">
+          <li><img src="../../static/front/images/k1.jpg" alt=""></li>
+          <li><img src="../../static/front/images/82.jpg" alt=""></li>
+          <li><img src="../../static/front/images/bg.jpg" alt=""></li>
+          <li><img src="../../static/front/images/index01.jpg" alt=""></li>
+          <li><img src="../../static/front/images/33.jpg" alt=""></li>
+          <li><img src="../../static/front/images/32.jpg" alt=""></li>
+          <li><img src="../../static/front/images/31.jpg" alt=""></li>
+        </ul>
+        <a href="javascript:void(0);" class="icon" id="prev"></a>
+        <a href="javascript:void(0);" class="icon" id="next"></a>
+      </div>
+      <div class="right">
+        <ul class="r-top clearfix">
+          <li class="on">全部图片</li>
+          <li >房间(30)</li>
+          <li>公共区域(22)</li>
+          <li>小区(16)</li>
+        </ul>
+        <div class="r-btm">
+          <ul class="clearfix" id="a1">
+            <li data-index="0"><img src="../../static/front/images/k1.jpg" alt=""></li>
+            <li data-index="1"><img src="../../static/front/images/82.jpg" alt=""></li>
+            <li data-index="2"><img src="../../static/front/images/bg.jpg" alt=""></li>
+            <li data-index="3"><img src="../../static/front/images/index01.jpg" alt=""></li>
+            <li data-index="4"><img src="../../static/front/images/33.jpg" alt=""></li>
+            <li data-index="5"><img src="../../static/front/images/32.jpg" alt=""></li>
+            <li data-index="6"><img src="../../static/front/images/31.jpg" alt=""></li>
+          </ul>
+          <ul class="clearfix" id="a2" style="display:none;">
+            <li data-index="4"><img src="../../static/front/images/33.jpg" alt=""></li>
+            <li data-index="5"><img src="../../static/front/images/32.jpg" alt=""></li>
+            <li data-index="6"><img src="../../static/front/images/31.jpg" alt=""></li>
+          </ul>
+          <ul class="clearfix" id="a3" style="display:none;">
+            <li data-index="0"><img src="../../static/front/images/k1.jpg" alt=""></li>
+            <li data-index="1"><img src="../../static/front/images/82.jpg" alt=""></li>
+            <li data-index="2"><img src="../../static/front/images/bg.jpg" alt=""></li>
+          </ul>
+          <ul class="clearfix" id="a4" style="display:none;">
+            <li data-index="0"><img src="../../static/front/images/k1.jpg" alt=""></li>
+            <li data-index="1"><img src="../../static/front/images/82.jpg" alt=""></li>
+            <li data-index="2"><img src="../../static/front/images/bg.jpg" alt=""></li>
+            <li data-index="5"><img src="../../static/front/images/32.jpg" alt=""></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+var obj = (function($){
+  var defaults = {
+    ele: '',
+    wrapper: '.img-container',
+    next: '#next',
+    prev: '#prev',
+    duration: 700
+  };
+  var lightBox = function (options){
+    this.opts = $.extend(true, {}, defaults, options || {});
+    this.ele = $(this.opts.ele);
+    this.wrapper = this.ele.find(this.opts.wrapper);
+    this.index = 0;
+    this.init();
+    this.event();
+  };
+  var fn = lightBox.prototype;
+  fn.init = function () {
+    if (!this.wrapper) return;
+    var width = this.ele.width(),
+    height = this.ele.height(),
+    len = this.wrapper.children().size();
+    this.wrapper.children().css({'width': width + 'px', 'height': height + 'px'})
+    this.offsetW = width;
+    this.len = len;
+    this.wrapper.css({'left': '0px','width': (width * len) + 'px'}); 
+  };
+  fn.event = function () {
+    var me = this;
+    $(this.opts.next).click(function(){
+      me.next();
+    });
+    $(this.opts.prev).click(function(){
+      me.prev();
+    });
+    $(document).delegate(".r-btm>ul>li", 'mouseenter', function(){
+      me.change2($(this).data('index'));
+    });
+  };
+  fn.animate = function (offset, prev) {
+    if (offset === 0) {
+        return;
+    }
+    this.animated = true;
+    var oft = this.change(this.index - 1, prev);
+    this.wrapper.children().css({'display': 'block'});
+    this.wrapper.css({'left': oft + 'px'});
+    var inteval = 10;
+    var me = this;
+    var speed = offset/(me.opts.duration/inteval);
+    var wrapLeft = parseInt(this.wrapper.position().left);
+    var left = wrapLeft + offset;
+    this.wrapper.animate({left:left+'px'},300,function(){
+       me.animated = false;
+    });
+    return;
+    /*var timer = null;
+    var go = function () {
+      if(timer) {
+        clearTimeout(timer);
+      }
+      if((speed > 0 && parseInt(me.wrapper.position().left) < left) || (speed < 0 && parseInt(me.wrapper.position().left) > left)) {
+        me.wrapper.css({'left': (me.wrapper.position().left + speed) + 'px'});
+        timer = setTimeout(go, inteval);
+      } else {
+       me.wrapper.css({'left': left + 'px'});
+       me.animated = false;
+      }
+    }
+    go();*/
+  };
+  fn.next = function () {
+    if (this.animated) {
+        return;
+    }
+    this.index ++ ;
+    if (this.index >= this.len) {
+      this.index = this.len-1;
+      return;
+    }
+    this.animate(-this.offsetW);
+
+  };
+  fn.prev = function () {
+    if (this.animated) {
+        return;
+    }
+    this.index -- ;
+    if (this.index < 0) {
+      this.index = 0;
+      return;
+    }
+    this.animate(this.offsetW, true);
+  };
+  fn.change = function (index, flag) {
+    if (flag) {
+      var offset = (-this.offsetW) * (index + 2);
+      return offset;
+    } else {
+      var offset = (-this.offsetW) * index;
+      return offset;
+    }
+  }
+  fn.change2 = function (index) {
+    var me = this;
+    if (me.index === index || this.animated) return;
+    this.wrapper.css({'left': '0px'});
+    this.wrapper.children().hide();
+    this.wrapper.children().eq(index).css({'display': 'list-item', 'opacity': '0.2'});
+    me.index = index;
+    this.wrapper.children().eq(index).animate({
+      opacity: 1
+    },{
+      duration: 1000
+    });
+  }
+  return lightBox;
+  })(jQuery);
+window.lightingBox === undefined && (window.lightingBox = obj);
+$(document).delegate(".r-top>li", 'click', function(){
+  if($(this).hasClass('on')) return;
+  $('.r-top>li').removeClass('on');
+  $(this).addClass('on');
+  $('.r-btm>ul').hide();
+  $('#a' + (parseInt($(this).index()) + 1)).show();
+});
+new lightingBox({
+  ele: '#slider'
+})
+
+
+</script>
+</html>

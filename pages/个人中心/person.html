@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  	<meta name=renderer content=webkit>
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  	<link rel="shortcut icon" href="../../../static/front/images/favicon.ico" type="image/x-icon" />
+  	<link rel="icon" type="image/x-icon" href="../../../static/front/images/favicon.ico">
+	<title>个人中心</title>
+	<link rel="stylesheet" href="../../../static/front/css/wz/rs.css">
+	<link rel="stylesheet" href="../../../static/front/css/gcr/rent.css">
+	<link rel="stylesheet" href="../../../static/front/iconfont/font-rent/iconfont.css">
+	<script src="../../../static/front/js/jquery.js"></script>
+	<script src="../../../static/front/js/jquery.validate.js"></script>
+	<script src="../../../static/front/js/jquery.validate.messages_cn.js"></script>
+	<script src="../../../static/front/js/layer/layer.js"></script>
+	<script src="../../../static/front/js/gcr/rent.js"></script>
+	<script src="../../../static/front/js/laydate/laydate.js"></script>
+	<!--[if lt IE 10]>
+	<script src="../../../static/front/js/media.match.min.js"></script>
+	<script src="../../../static/front/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="personCenter">
+		<div class="header per-header shadow text-left">
+			<div class="auto clearfix">
+				<div class="logo per-logo text-left float-left">
+					<a class="float-left" href="http://192.168.0.11:84/front/wz/%E9%A6%96%E9%A1%B5.html"><img src="../../../static/front/images/logo.png" alt=""></a>
+					<div class="select-box houseHeaderUl">
+				        <ul class="build-result houseResult" style="display:none;">
+				          	<li><a href="javascript:;" data-val="1">北京</a></li>
+				          	<li><a href="javascript:;" data-val="2">上海</a></li>
+				          	<li><a href="javascript:;" data-val="3">天津</a></li>
+				          	<li><a href="javascript:;" data-val="4">重庆</a></li>
+				        </ul>
+				        <span class="select-title hook-select houseHeaderSpan">郑州</span>
+				        <input type="hidden" name="yss" id="yss" value="1">
+				        <i class="icon iconfont icon-toDown hook-select arrow-bottom"></i>
+			      	</div>
+				</div>
+				<div class="phone float-right clearfix">
+					<ul class="nav-ul nav-ul-l float-left clearfix">
+						<li class="float-left"><a href="http://192.168.0.11:84/front/wz/%E9%A6%96%E9%A1%B5.html">首页</a></li>
+						<li class="float-left"><a href="http://192.168.0.11:84/front/wz/%E6%88%BF%E5%B1%8B%E5%88%97%E8%A1%A8.html">立即找房</a></li>
+						<li class="float-left"><a href="http://192.168.0.11:84/front/gcr/%E5%9C%B0%E5%9B%BE%E6%89%BE%E6%88%BF/map.html">地图找房</a></li>
+						<li class="float-left"><a href="http://192.168.0.11:84/front/wz/%E7%B2%BE%E9%80%89%E7%BE%8E%E5%B1%8B.html">主题美屋</a></li>
+					</ul>
+					<ul class="nav-ul nav-ul-r float-right clearfix">
+						<li class="float-left"><a href="http://192.168.0.11:84/front/gcr/%E6%88%BF%E4%B8%9C%E5%85%A5%E9%A9%BB/index.html">房东入驻</a></li>
+						<li class="float-left"><a class="log" href="##">登录</a></li>
+						<!-- <li class="float-left"><a href="##">注册</a></li> -->
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="auto">
+			<div class="per-content clearfix">
+				<div class="per-main clearfix">
+					<div class="pull-lefts float-left">
+						<div class="headPic">
+							<img src="../../../static/front/images/headPic.png" alt="">
+							<p class="per-name text-center">Monph</p>
+						</div>
+						<div class="information">
+							<ul>
+								<li>
+									<p class="current">
+										<i class="icon iconfont icon-gerenziliao2"></i>
+										<a href="##" data-id="per-data">个人资料</a>
+									</p>
+								</li>
+								<li>
+									<p>
+										<i class="icon iconfont icon-cebianlan-zhanghuanquan"></i>
+										<a href="##" data-id="per-safe">账户安全</a>
+									</p>
+								</li>
+								<!-- <li>
+									<p>
+										<i class="icon iconfont icon-fangyuanguanli1"></i>
+										<a href="##" data-id="per-manage">房源管理</a>
+									</p>
+								</li> -->
+							</ul>
+						</div>
+					</div>
+					<div class="pull-rights float-left active" id="per-data">
+						<div class="title">个人资料</div>
+						<div class="per-infor">
+							<form class="per-form">
+								<div class="formgroup formgroupHead clearfix">
+									<label class="control-label float-left" for="">头像</label>
+									<div class="headimgWrap float-left">
+										<div class="imgWrap">
+											<img src="../../../static/front/images/headPic.png" alt="">
+										</div>
+										<!-- <div class="edit">
+											<input type="file">
+											<span>编辑头像</span>
+										</div> -->
+										<p>支持jpg、png格式，大小不超过200kb</p>
+									</div>
+								</div>
+								<div class="formgroup">
+									<label class="control-label" for="">姓名</label>
+									<input class="formInput user" type="text" name="user" placeholder="请填写姓名">
+								</div>
+								<div class="formgroup clearfix">
+									<label class="control-label float-left" for="">性别</label>
+									<div class="radio-custom radio-primary sex">
+										<input type="radio" name="sex" checked="checked">
+										<label for="">男</label>
+									</div>
+									<div class="radio-custom radio-primary sex">
+										<input type="radio" name="sex">
+										<label for="">女</label>
+									</div>
+								</div>
+								<div class="formgroup educationDiv clearfix">
+									<label class="control-label float-left" for="">学历</label>
+									<div class="houseHeaderUl houseMapHeader float-left">
+							            <ul class="houseType houseResult" style="display: none;">
+							                <li><a href="javascript:;" data-val="1">博士</a></li>
+							                <li><a href="javascript:;" data-val="2">硕士</a></li>
+							                <li><a href="javascript:;" data-val="3">本科</a></li>
+							                <li><a href="javascript:;" data-val="4">本科以下</a></li>
+							            </ul>
+							            <input class="formInput education houseHeaderSpan" type="text" name="education" placeholder="请选择学历" readonly="readonly">
+							            <input type="hidden" value="0">
+							            <i class="icon iconfont icon-xiala hook-select"></i>
+						          	</div>
+								</div>
+								<div class="formgroup">
+									<label class="control-label" for="">生日</label>
+									<input class="formInput birthday" id="birthday" type="text" name="education" placeholder="请填写生日" readonly="readonly">
+								</div>
+								<div class="formgroup formgroupLast">
+									<label class="control-label" for="">职业</label>
+									<input class="formInput" type="text" name="profession" placeholder="请填写职业">
+								</div>
+								<div class="clearfix">
+									<input class="submit" type="submit" value="保存">
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="pull-rights float-left" id="per-safe">
+						<div class="title">
+							<span class="accountSafe">账户安全</span>
+						</div>
+						<div class="per-safe-item">
+							<div class="safe">
+								<ul class="clearfix">
+									<li class="float-left">
+										<i class="icon iconfont icon-zhanghuguanli"></i>
+										<p class="safe-infor-p">账户信息</p>
+										<p>手机号码：<span class="mob">18238806682</span>
+											<a class="decoration modification m-phone" href="##">修改</a>
+										</p>
+									</li>
+									<!-- <li class="float-left">
+										<i class="icon iconfont icon-renzheng"></i>
+										<p class="safe-infor-p">实名认证</p>
+										<p>手机号码：<span class="mob">18238806682</span>
+											<a class="decoration modification" href="##">修改</a>
+										</p>
+									</li> -->
+									<li class="float-left">
+										<i class="icon iconfont icon-mima1"></i>
+										<p class="safe-infor-p">登录密码</p>
+										<p>定期修改以保障您的账户安全<a class="decoration modification m-pass" href="##">修改</a></p>
+									</li>
+								</ul>
+							</div>
+							<div class="modifyAcc">
+								<div class="curInputGroup curInput" data-id="m-pass">
+									<form class="per-form-safe per-form-pass">
+										<div class="formgroup">
+											<label class="control-label" for=""><span class="color-red">*</span>设置密码</label>
+											<input class="formInput password" id="password1" type="password" name="password1" placeholder="请填写登录密码">
+										</div>
+										<div class="formgroup">
+											<label class="control-label" for=""><span class="color-red">*</span>确认密码</label>
+											<input class="formInput password" type="password" name="password2" placeholder="请确认登录密码">
+										</div>
+										<div class="clearfix">
+											<input class="submit" type="submit" value="保存">
+										</div>
+									</form>
+								</div>
+								<div class="curInputGroup" data-id="m-phone">
+									<form class="per-form-safe per-form-phone">
+										<div class="formgroup inputfocus">
+											<label class="control-label" for=""><span class="color-red">*</span>新手机号码</label>
+											<input class="formInput education reqInput" type="text" name="tel" placeholder="请填写新手机号码" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="11">
+											<span class="error"><i class="icon iconfont icon-xiaochahao"></i>该手机号已存在</span>
+										</div>
+										<div class="formgroup formgroupLast parent">
+											<label class="control-label" for=""><span class="color-red">*</span>手机验证码</label>
+											<div class="inpDiv">
+												<input class="formInput birthday" type="text" name="mobileCode" placeholder="请填写手机验证码">
+												<input type="button" class="tel-code code text-center" value="获取验证码">
+											</div>
+										</div>
+										<div class="clearfix">
+											<input class="submit" type="submit" value="保存">
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- <div class="pull-rights float-left" id="per-manage">
+						<div class="title house">房源管理</div>
+						<div class="manageGroup">
+							<ul class="clearfix">
+								<li>
+									<div class="li-detail">
+										<a href="">
+											<img src="../../../static/front/images/hourse.png" alt="">
+										</a>
+										<div class="flow-detail">
+											<p class="flow-text">
+												<span title="【合租】滨河花园（紫宸路）3居室A房间">【合租】滨河花园（紫宸路）3居室A房间</span>
+												<span class="price">￥<em>2000</em>/月</span>
+											</p>
+											<div class="flow">
+												<ul class="clearfix">
+													<li class="active">
+														<div class="titleDiv">
+															<i class="circle"></i>
+															<p>审核</p>
+														</div>
+													</li>
+													<li class="clearfix">
+														<span class="float-left"></span>
+														<div class="titleDiv float-left">
+															<i class="circle"></i>
+															<p class="text-right">待租</p>
+														</div>
+													</li>
+													<li class="clearfix">
+														<span class="float-left"></span>
+														<div class="titleDiv float-left">
+															<i class="circle"></i>
+															<p class="text-right">签约</p>
+														</div>
+													</li>
+													<li class="clearfix">
+														<span class="float-left"></span>
+														<div class="titleDiv float-left">
+															<i class="circle"></i>
+															<p class="text-right">出租</p>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="li-detail">
+										<a href="">
+											<img src="../../../static/front/images/hourse.png" alt="">
+										</a>
+										<div class="flow-detail">
+											<p class="flow-text">
+												<span title="【合租】滨河花园（紫宸路）3居室A房间">【合租】滨河花园（紫宸路）3居室A房间</span>
+												<span class="price">￥<em>2000</em>/月</span>
+											</p>
+											<div class="flow">
+												<ul class="clearfix">
+													<li>
+														<div class="titleDiv">
+															<i class="circle"></i>
+															<p>审核</p>
+														</div>
+													</li>
+													<li class="clearfix active">
+														<span class="float-left"></span>
+														<div class="titleDiv float-left">
+															<i class="circle"></i>
+															<p class="text-right">待租</p>
+														</div>
+													</li>
+													<li class="clearfix">
+														<span class="float-left"></span>
+														<div class="titleDiv float-left">
+															<i class="circle"></i>
+															<p class="text-right">签约</p>
+														</div>
+													</li>
+													<li class="clearfix">
+														<span class="float-left"></span>
+														<div class="titleDiv float-left">
+															<i class="circle"></i>
+															<p class="text-right">出租</p>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="li-detail">
+										<a href="">
+											<img src="../../../static/front/images/hourse.png" alt="">
+										</a>
+										<div class="flow-detail">
+											<p class="flow-text">
+												<span title="【合租】滨河花园（紫宸路）3居室A房间">【合租】滨河花园（紫宸路）3居室A房间</span>
+												<span class="price">￥<em>2000</em>/月</span>
+											</p>
+											<div class="flow">
+												<ul class="clearfix">
+													<li>
+														<div class="titleDiv">
+															<i class="circle"></i>
+															<p>审核</p>
+														</div>
+													</li>
+													<li class="clearfix">
+														<span class="float-left"></span>
+														<div class="titleDiv float-left">
+															<i class="circle"></i>
+															<p class="text-right">待租</p>
+														</div>
+													</li>
+													<li class="clearfix active">
+														<span class="float-left"></span>
+														<div class="titleDiv float-left">
+															<i class="circle"></i>
+															<p class="text-right">签约</p>
+														</div>
+													</li>
+													<li class="clearfix">
+														<span class="float-left"></span>
+														<div class="titleDiv float-left">
+															<i class="circle"></i>
+															<p class="text-right">出租</p>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="li-detail">
+										<a href="">
+											<img src="../../../static/front/images/hourse1.png" alt="">
+										</a>
+										<div class="flow-detail">
+											<p class="flow-text">
+												<span title="【合租】滨河花园（紫宸路）3居室A房间">【合租】滨河花园（紫宸路）3居室A房间</span>
+												<span class="price">￥<em>2000</em>/月</span>
+											</p>
+											<div class="flow">
+												<ul class="clearfix">
+													<li>
+														<div class="titleDiv">
+															<i class="circle"></i>
+															<p>审核</p>
+														</div>
+													</li>
+													<li class="clearfix active">
+														<span class="float-left"></span>
+														<div class="titleDiv float-left">
+															<i class="circle"></i>
+															<p class="text-right">待租</p>
+														</div>
+													</li>
+													<li class="clearfix">
+														<span class="float-left"></span>
+														<div class="titleDiv float-left">
+															<i class="circle"></i>
+															<p class="text-right">签约</p>
+														</div>
+													</li>
+													<li class="clearfix">
+														<span class="float-left"></span>
+														<div class="titleDiv float-left">
+															<i class="circle"></i>
+															<p class="text-right">出租</p>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="clearfix">
+									<div class="li-detail">
+										<a href="">
+											<img src="../../../static/front/images/hourse1.png" alt="">
+										</a>
+										<div class="flow-detail">
+											<p class="flow-text">
+												<span title="【合租】滨河花园（紫宸路）3居室A房间">【合租】滨河花园（紫宸路）3居室A房间</span>
+												<span class="price">￥<em>2000</em>/月</span>
+											</p>
+											<div class="flow">
+												<ul class="clearfix">
+													<li>
+														<div class="titleDiv">
+															<i class="circle"></i>
+															<p>审核</p>
+														</div>
+													</li>
+													<li class="clearfix">
+														<span class="float-left"></span>
+														<div class="titleDiv float-left">
+															<i class="circle"></i>
+															<p class="text-right">待租</p>
+														</div>
+													</li>
+													<li class="clearfix">
+														<span class="float-left"></span>
+														<div class="titleDiv float-left">
+															<i class="circle"></i>
+															<p class="text-right">签约</p>
+														</div>
+													</li>
+													<li class="clearfix active">
+														<span class="float-left"></span>
+														<div class="titleDiv float-left">
+															<i class="circle"></i>
+															<p class="text-right">出租</p>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div> -->
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="auto">
+				<div class="fo-content">
+					<div class="clearfix">
+						<div class="fo-left float-left">
+							<img class="fo-logo" src="../../../static/front/images/logo_03.png" alt="">
+							<p class="fo-serve">客服电话</p>
+							<p class="fo-phone">
+								<span>400-0371-921</span>
+								<span>0371-86680207/801</span>
+							</p>
+							<p class="fo-serve">商务合作</p>
+							<p>
+								<span>QQ：465896343</span>
+								<span>Email：monph@monph.coml</span>
+							</p>
+						</div>
+						<div class="fo-center float-left clearfix">
+							<ul>
+								<li class="fo-title">帮助中心</li>
+								<li><a href="http://192.168.0.11:84/front/gcr/%E6%88%BF%E4%B8%9C%E5%85%A5%E9%A9%BB/index.html">房东入驻</a></li>
+								<li><a href="http://192.168.0.11:84/front/gcr/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC/about.html">常见问题</a></li>
+								<li><a href="http://192.168.0.11:84/front/gcr/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC/about.html">网站地图</a></li>
+							</ul>
+							<ul>
+								<li class="fo-title">关于我们</li>
+								<li><a href="http://192.168.0.11:84/front/gcr/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC/about.html">关于大鱼</a></li>
+								<li><a href="http://192.168.0.11:84/front/gcr/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC/about.html">加入我们</a></li>
+								<li><a href="http://192.168.0.11:84/front/gcr/%E6%88%BF%E4%B8%9C%E5%85%A5%E9%A9%BB/about.html">商务合作</a></li>
+								<li><a href="http://192.168.0.11:84/front/gcr/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC/about.html">隐私条款</a></li>
+							</ul>
+						</div>
+						<div class="fo-right float-left">
+							<p class="downlode">APP下载</p>
+							<div class="fo-code clearfix">
+								<img class="float-left" src="../../../static/front/images/code.png" alt="">
+								<div class="float-left">
+									<a class="active" href="##">ios下载</a>
+									<a href="##">android下载</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<p class="text-center">Copyright 2017 大鱼好房 版权所有 豫ICP备17006980号-1</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../../../static/front/js/gcr/dropDown.js"></script>
+<script>
+	// 日历插件
+  laydate.render({ 
+    elem: '#birthday' //或 elem: document.getElementById('test')、elem: lay('#test') 等
+  });
+</script>
+</html>

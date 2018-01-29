@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name=renderer content=webkit>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="shortcut icon" href="../../static/image/favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/x-icon" href="../../static/front/images/favicon.ico">
+  <link rel="stylesheet" href="../../static/front/css/wz/rs.css">
+  <link rel="stylesheet" href="../../static/front/css/wz/zf.css">
+  <script src="../../static/front/js/jquery.js"></script>
+  <script src="../../static/front/js/jquery.validate.js"></script>
+  <script src="../../static/front/js/jquery.validate.messages_cn.js"></script>
+  <script src="../../static/front/js/layer/layer.js"></script>
+  <script src="../../static/front/js/jquery.easing.1.3.js"></script>
+  <script src="../../static/front/js/chooseManager.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=KwZhXg0g9C5zZpDIZX895Xfn"></script>
+  <title>大鱼 - 专业的一站式公寓PMS云平台</title>
+  <meta name="description" content="专业的一站式公寓PMS云平台">
+</head>
+<div class="head-wrapper">
+    <div class="header middle clearfix">
+      <a href="./首页.html" class="logo"><img  src="../../static/front/images/logo.png" alt=""></a>
+      <div class="select-box">
+        <ul class="build-result" style="width: 286px; display: none;">
+          <li><a href="javascript:;" data-val="1">北京</a></li>
+          <li><a href="javascript:;" data-val="2">北京</a></li>
+          <li><a href="javascript:;" data-val="3">北京</a></li>
+          <li><a href="javascript:;" data-val="4">北京</a></li>
+        </ul>
+        <span class="select-title hook-select">郑州</span>
+        <input type="hidden" name="yss" id="yss" value="1">
+        <i class="hook-select arrow-bottom"></i>
+      </div>
+      <ul class="nav clearfix w1">
+        <li><a class="on" href="首页.html">首页</a></li>
+        <li><a href="./房屋列表.html">立即找房</a></li>
+        <li><a href="../gcr/%E5%9C%B0%E5%9B%BE%E6%89%BE%E6%88%BF/map.html">地图找房</a></li>
+        <li><a href="./精选美屋.html">主题美屋</a></li>
+      </ul>
+      <div class="others pull-right">
+        <a class="housin" href="../gcr/%E6%88%BF%E4%B8%9C%E5%85%A5%E9%A9%BB/index.html" >房东入驻</a>
+        <a class="log housin" href="javascript:void(0);" >登录</a>
+        <!-- <a href="../gcr/%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C/register.html" >注册</a> -->
+      </div>
+    </div>
+  </div>
+  <div class="house-photo">
+    <div class="crumbs">
+      <a href="">大鱼租房</a>&nbsp;>&nbsp;<span >立即找房</span>
+    </div>
+    <div class="photos clearfix">
+      <h1 class="title">【合租】海马公园5居室-主卧&nbsp;&nbsp;&nbsp;<span class="icon star"></span><span class="icon star"></span><span class="icon star"></span><span class="icon star"></span><span class="icon star"></span></h1>
+      <div class="des-fla">
+        <p class="desc"><a href="" class="icon icon-map6"></a><span>金水区</span>&nbsp;&nbsp;&nbsp;<span>梧桐街与雪松路交汇处</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="" id="classMap" class="text-unline">交通地图</a></p>
+        <p class="flag">
+          <span>免费保洁</span>
+          <span>免费wifi</span>
+          <span>已住两人</span>
+        </p>
+        <div class="price">
+          <strong>1680元</strong>&nbsp;起&nbsp;/&nbsp;月
+        </div>
+      </div>
+      <div class="img-box imb2 clearfix">
+        <img class="img2 imgW3 mb10 " src="../../static/front/images/02.jpg" alt="">
+        <img class="img2 imgW3 mr10 mb10" src="../../static/front/images/03.jpg" alt="">
+        <img class="img2 imgW3 mb10 mr0" src="../../static/front/images/03.jpg" alt="">
+        <img class="img2 imgW3 mr10" src="../../static/front/images/03.jpg" alt="">
+        <img class="img2 imgW3 " src="../../static/front/images/03.jpg" alt="">
+        <img class="img2 imgW3 mr0" src="../../static/front/images/03.jpg" alt="">
+        <div class="more-picture no-wrap">
+          <a href="javascript:void(0);" id="picture">查看更多68张图片</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class="clearfix tab" id="tabBar">
+    <li class="on">房型</li>
+    <li>小区信息</li>
+    <li>位置交通</li>
+    <li>周边配套</li>
+  </ul>
+  <div class="fixbar" id="fixbar">
+    <div class="fixbar-wrapper clearfix">
+      <ul class="clearfix tab">
+        <li class="on">房型</li>
+        <li>小区信息</li>
+        <li>位置交通</li>
+        <li>周边配套</li>
+      </ul>
+      <div class="btns pull-right">
+        <div class="service-time">
+          <p class="a">400 - 0371- 921</p>
+          <p class="b">服务时间：9：00 - 21：00</p>
+        </div>
+        <a href="javascript:layerDisplay('#wykf');" class="icon kf">我要看房</a>
+      </div>
+    </div>
+  </div>
+  <div class="house-info-title">
+    <div id="room_id_01" class="line"></div>房间设施
+  </div>
+  <div class="room-facilities mato ">
+    <ul>
+      <li class="clearfix">
+        <div class="left clearfix">
+          <img class="pull-left" src="../../static/front/images/82.jpg" alt="">
+          <div class="text pull-left">
+            <p class="title">【合租】3居室 - 主卧 - 带阳台</p>
+            <p class="desc"><span class="mr15">面积：26㎡</span><span class="mr15">朝向：南</span><span class="mr15">楼层：3&nbsp;/&nbsp;7</span><span>户型：3室2厅</span></p>
+            <div class="icons clearfix">
+              <i class="icon icon-air-conditioner"></i>
+              <i class="icon icon-refrigerator"></i>
+              <i class="icon icon-wash"></i>
+              <i class="icon icon-wardrobe"></i>
+              <i class="icon icon-bed"></i>
+            </div>
+            <div class="price">
+              <strong>1200</strong>&nbsp;元&nbsp;/&nbsp;月
+            </div>
+          </div>
+        </div>
+        <div class="right">
+          <img src="../../static/front/images/l4.png" alt="">
+          <a href="./房屋详情.html">我要看房</a>
+        </div>
+        <!-- <div class="shadow"></div> -->
+      </li>
+      <li class="clearfix">
+        <div class="left clearfix">
+          <img class="pull-left" src="../../static/front/images/82.jpg" alt="">
+          <div class="text pull-left">
+            <p class="title">【合租】3居室 - 主卧 - 带阳台</p>
+            <p class="desc"><span class="mr15">面积：26㎡</span><span class="mr15">朝向：南</span><span class="mr15">楼层：3&nbsp;/&nbsp;7</span><span>户型：3室2厅</span></p>
+            <div class="icons clearfix">
+              <i class="icon icon-air-conditioner"></i>
+              <i class="icon icon-refrigerator"></i>
+              <i class="icon icon-wash"></i>
+              <i class="icon icon-wardrobe"></i>
+              <i class="icon icon-bed"></i>
+            </div>
+            <div class="price">
+              <strong>1200</strong>&nbsp;元&nbsp;/&nbsp;月
+            </div>
+          </div>
+        </div>
+        <div class="right">
+          <img src="../../static/front/images/l4.png" alt="">
+          <a href="./房屋详情.html">我要看房</a>
+        </div>
+        <div class="shadow"></div>
+      </li>
+      <li class="clearfix">
+        <div class="left clearfix">
+          <img class="pull-left" src="../../static/front/images/82.jpg" alt="">
+          <div class="text pull-left">
+            <p class="title">【合租】3居室 - 主卧 - 带阳台</p>
+            <p class="desc"><span class="mr15">面积：26㎡</span><span class="mr15">朝向：南</span><span class="mr15">楼层：3&nbsp;/&nbsp;7</span><span>户型：3室2厅</span></p>
+            <div class="icons clearfix">
+              <i class="icon icon-air-conditioner"></i>
+              <i class="icon icon-refrigerator"></i>
+              <i class="icon icon-wash"></i>
+              <i class="icon icon-wardrobe"></i>
+              <i class="icon icon-bed"></i>
+            </div>
+            <div class="price">
+              <strong>1200</strong>&nbsp;元&nbsp;/&nbsp;月
+            </div>
+          </div>
+        </div>
+        <div class="right">
+          <img src="../../static/front/images/l4.png" alt="">
+          <a href="./房屋详情.html">我要看房</a>
+        </div>
+        <div class="shadow"></div>
+      </li>
+    </ul>
+    <a href="./房屋列表.html" class="icon more mt34 wi">查看更多房间</a>
+  </div>
+  <div class="house-info-title hook-area">
+    <div id="a_1" class="line"></div>小区信息
+  </div>
+  <div class="bewrite mato">
+    <p><span>所属区域</span>：域惠济区  刘寨</p>
+    <p><span>竣工时间</span>：2009-10-01</p>
+    <p><span>绿  &nbsp;化  率</span>：37%</p>
+    <p><span>供&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;水</span>：市政供水</p>
+    <p><span>供&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;暖</span>：集中供暖</p>
+    <p><span>燃&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;气</span>：管道天然气入户</p>
+    <p>电梯服务</span>：全天开放</p>
+    <p>通讯设备</span>：电信宽带入户</p>
+    <p><span>安全管理</span>：楼宇对讲、单元门锁、摄像头</p>
+  </div>
+  <div class="house-info-title hook-area" id="room_id_04">
+    <div id="a_2" class="line"></div>位置交通
+  </div>
+  <div class="peripheral mato clearfix">
+    <div class="left">
+      <div class="map" id="map"></div>
+      <ul class="shortcut" id="shortcut">
+        <li>
+          <i class="icon icon-subway"></i>
+          <p>交通</p>
+        </li>
+        <li>
+          <i class="icon icon-food"></i>
+          <p>餐饮</p>
+        </li>
+        <li>
+          <i class="icon icon-shopping"></i>
+          <p>购物</p>
+        </li>
+        <li>
+          <i class="icon icon-bank"></i>
+          <p>银行</p>
+        </li>
+        <li>
+          <i class="icon icon-scenery"></i>
+          <p>景点</p>
+        </li>
+        <li>
+          <i class="icon icon-market"></i>
+          <p>超市</p>
+        </li>
+        <li>
+          <i class="icon icon-hospital"></i>
+          <p>医院</p>
+        </li>
+        <li>
+          <i class="icon icon-train"></i>
+          <p>火车站</p>
+        </li>
+      </ul>
+    </div>
+    <div class="right">
+      <div id="sa_0" class="station sa_sta">
+        <p><a href="" class="on">地铁站</a><a href="">公交站</a></p>
+        <ul class="">
+          <li>
+            <p class="name">西三环</p>
+            <p>地铁1号线</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+          <li>
+            <p class="name">西三环</p>
+            <p>地铁1号线</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+          <li>
+            <p class="name">西三环</p>
+            <p>地铁1号线</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div id="sa_1" class="station none sa_sta">
+        <p><a href="" class="on">附近餐饮</a></p>
+        <ul class="">
+          <li>
+            <p class="name">必胜客</p>
+            <p>宅急送</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+          <li>
+            <p class="name">必胜客</p>
+            <p>宅急送</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+          <li>
+            <p class="name">必胜客</p>
+            <p>宅急送</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div id="sa_2" class="station none sa_sta">
+        <p><a href="" class="on">附近购物</a></p>
+        <ul class="">
+          <li>
+            <p class="name">大商</p>
+            <p>金水路</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+          <li>
+            <p class="name">大商</p>
+            <p>金水路</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+          <li>
+            <p class="name">大商</p>
+            <p>金水路</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div id="sa_3" class="station none sa_sta">
+        <p><a href="" class="on">附近银行</a></p>
+        <ul class="">
+          <li>
+            <p class="name">中国银行</p>
+            <p>京广路</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+          <li>
+            <p class="name">工商银行</p>
+            <p>京广路</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+          <li>
+            <p class="name">交通银行</p>
+            <p>京广路</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div id="sa_4" class="station none sa_sta">
+        <p><a href="" class="on">附近景点</a></p>
+        <ul class="">
+          <li>
+            <p class="name">二七塔</p>
+            <p>人民路</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+          <li>
+            <p class="name">二七塔</p>
+            <p>人民路</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+          <li>
+            <p class="name">二七塔</p>
+            <p>人民路</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div id="sa_5" class="station none sa_sta">
+        <p><a href="" class="on">附近超市</a></p>
+        <ul class="">
+          <li>
+            <p class="name">沃尔玛</p>
+            <p>二七路</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+          <li>
+            <p class="name">沃尔玛</p>
+            <p>二七路</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+          <li>
+            <p class="name">沃尔玛</p>
+            <p>二七路</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div id="sa_6" class="station none sa_sta">
+        <p><a href="" class="on">附近医院</a></p>
+        <ul class="">
+          <li>
+            <p class="name">郑大一附院</p>
+            <p>京广路</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+          <li>
+            <p class="name">郑大一附院</p>
+            <p>京广路</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+          <li>
+            <p class="name">郑大一附院</p>
+            <p>京广路</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div id="sa_7" class="station none sa_sta">
+        <p><a href="" class="on">附近火车站</a></p>
+        <ul class="">
+          <li>
+            <p class="name">东站</p>
+            <p>商都路</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+          <li>
+            <p class="name">东站</p>
+            <p>商都路</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+          <li>
+            <p class="name">东站</p>
+            <p>商都路</p>
+            <div class="meter">
+              <i class="icon icon-arrow"></i>268米 
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="station">
+        <p><a href="" class="on">到这里去</a><a href="">从这里出发</a></p>
+        <div>
+          <input type="text" class="input" placeholder="请输入有效的地址名称">
+          <p>
+            <input type="button" class="btn" value="公交"></input>
+            <input type="button" class="btn" value="步行"></input>
+            <input type="button" class="btn" value="驾车"></input>
+          </p>
+        </div>
+      </div>
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="house-info-title hook-area">
+    <div id="a_3" class="line"></div>周边配套
+  </div>
+  <div class="bewrite mato">
+    <p><span>附近商圈</span>：可以直达的商圈有：二七万达、火车站、二七广场</p>
+    <p><span>此房特别</span>：适合主要目标租客群来源：上班族</p>
+    <p><span>公交线路</span>：30、11、34、99、203、204、287、322、b23路</p>
+    <p><span>超&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市</span>：西元国际</p>
+    <p><span>菜&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市</span>：楼下就是菜市场</p>
+    <p><span>银&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行</span>：附近有中国工商银行、中国建设银行、郑州银行</p>
+    <p>餐&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;饮</span>：距离合记640米、伊兰轩1.2千米、绿茵阁1.3千米</p>
+    <p>医&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;院</span>：距离郑州中心医院1.9千米、郑州华山医院2.1千米、郑州市中医院2.2千米</p>
+    <p><span>电  &nbsp;影  院</span>：奥斯卡西元影城、星美影院、万达影城</p>
+  </div>
+  <div class="house-info-title mt20">
+    <div class="line"></div>周边小区
+  </div>
+  <div class="beautiful mt24 mb24 clearfix">
+    <ul class="recommend clearfix">
+      <li>
+        <a href="./小区详情.html" class="pos-rel">
+          <img src="../../static/front/images/i1.png" alt="">
+          <div class="map-desc-name">
+            <i class="icon icon-map3"></i><span>商鼎路与七里河路交叉口</span>
+          </div>
+        </a>
+        <div class="desc">
+          <p><a href="./小区详情.html">滨河花园(紫辰路)4居室-北卧</a></p>
+          <p><span class="no-wrap">郑大一附院</span><span class="no-wrap">丹尼斯购物</span><span class="no-wrap">出门公交</span></p>
+          <div class="price">¥<strong>1280</strong>/月</div>
+        </div>
+      </li>
+      <li>
+        <a href="./小区详情.html" class="pos-rel">
+          <img src="../../static/front/images/i1.png" alt="">
+          <div class="map-desc-name">
+            <i class="icon icon-map3"></i><span>商鼎路与七里河路交叉口</span>
+          </div>
+        </a>
+        <div class="desc">
+          <p><a href="./小区详情.html">滨河花园(紫辰路)4居室-北卧</a></p>
+          <p><span class="no-wrap">郑大一附院</span><span class="no-wrap">丹尼斯购物</span><span class="no-wrap">出门公交</span></p>
+          <div class="price">¥<strong>1280</strong>/月</div>
+        </div>
+      </li>
+      <li>
+        <a href="./小区详情.html" class="pos-rel">
+          <img src="../../static/front/images/i1.png" alt="">
+          <div class="map-desc-name">
+            <i class="icon icon-map3"></i><span>商鼎路与七里河路交叉口</span>
+          </div>
+        </a>
+        <div class="desc">
+          <p><a href="./小区详情.html">滨河花园(紫辰路)4居室-北卧</a></p>
+          <p><span class="no-wrap">郑大一附院</span><span class="no-wrap">丹尼斯购物</span><span class="no-wrap">出门公交</span></p>
+          <div class="price">¥<strong>1280</strong>/月</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="footer">
+      <div class="mato">
+        <div class="fo-content">
+          <div class="clearfix">
+            <div class="fo-left pull-left">
+              <img class="fo-logo" src="../../static/front/images/logo_03.png" alt="">
+              <p class="fo-serve">客服电话</p>
+              <p class="fo-phone">
+                <span>400-0371-921</span>
+                <span>0371-86680207/801</span>
+              </p>
+              <p class="fo-serve">商务合作</p>
+              <p>
+                <span>QQ：465896343</span>
+                <span>Email：monph@monph.coml</span>
+              </p>
+            </div>
+            <div class="fo-center pull-left clearfix">
+              <ul>
+                <li class="fo-title">帮助中心</li>
+                <li><a href="http://192.168.0.11:84/front/gcr/%E6%88%BF%E4%B8%9C%E5%85%A5%E9%A9%BB/index.html">房东入驻</a></li>
+                <li><a href="http://192.168.0.11:84/front/gcr/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC/about.html">常见问题</a></li>
+                <li><a href="http://192.168.0.11:84/front/gcr/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC/about.html">网站地图</a></li>
+              </ul>
+              <ul>
+                <li class="fo-title">关于我们</li>
+                <li><a href="http://192.168.0.11:84/front/gcr/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC/about.html">关于大鱼</a></li>
+                <li><a href="http://192.168.0.11:84/front/gcr/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC/about.html">加入我们</a></li>
+                <li><a href="http://192.168.0.11:84/front/gcr/%E6%88%BF%E4%B8%9C%E5%85%A5%E9%A9%BB/about.html">商务合作</a></li>
+                <li><a href="http://192.168.0.11:84/front/gcr/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC/about.html">隐私条款</a></li>
+              </ul>
+            </div>
+            <div class="fo-right pull-left">
+              <p class="downlode">APP下载</p>
+              <div class="fo-code clearfix">
+                <img class="pull-left" src="../../static/front/images/code.png" alt="">
+                <div class="pull-left">
+                  <a class="active" href="##">ios下载</a>
+                  <a href="##">android下载</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="copyright">Copyright 2017 大鱼pms 版权所有 豫ICP备17006980号-1</p>
+        </div>
+      </div>
+  </div>
+  <div class="layer">
+  </div>
+  <div id="wykf" class="look-house pr">
+    <i class="icon icon-x"></i>
+    <h5 class="title">预约看房</h5>
+    <form action="" class="form">
+      <div class="group">
+        <label for="" class="txt">
+          您的姓名：
+        </label>
+        <div class="content">
+          <input type="text" class="input" placeholder="请输入姓名(必填)">
+        </div>
+      </div>
+      <div class="group">
+        <label for="" class="txt">
+          联系电话：
+        </label>
+        <div class="content">
+          <input type="text" class="input" placeholder="请输入手机号(必填)">
+        </div>
+      </div>
+      <div class="group">
+        <label for="" class="txt">
+          图片验证码：
+        </label>
+        <div class="content pr">
+          <input type="text" class="input" placeholder="请输入图片验证码(必填)">
+          <img src="../../static/front/images/oo.png" class="identifying" alt="">
+        </div>
+      </div>
+      <div class="group">
+        <label for="" class="txt">
+          短信验证码：
+        </label>
+        <div class="content">
+          <input type="text" class="input wid120" placeholder="请输入短信验证码(必填)">
+          <input type="button" class="dx" value="获取验证码">
+        </div>
+      </div>
+      <div class="bottom clearfix">
+        <input type="submit" class="submit" value="立即预约">
+      </div>
+    </form>
+    <p class="tips">收不到短信?请拨打客服电话<strong>400 - 0371 - 921</strong>联系大鱼预约看房</p>
+  </div>
+  <script src="../../static/front/js/iscroll.js"></script>
+  <script>
+  chooseManager();
+    managerResult();
+    unbind();
+    mouseleaveHide();
+    var map = new BMap.Map("map");
+    map.centerAndZoom("郑州",13); 
+    var geoc = new BMap.Geocoder();   
+    // 初始化地图,设置城市和地图级别。
+    map.enableScrollWheelZoom();  // 开启鼠标滚轮缩放    
+    map.enableKeyboard();         // 开启键盘控制    
+    map.enableContinuousZoom();   // 开启连续缩放效果    
+    map.enableInertialDragging(); // 开启惯性拖拽效果  
+    $(function(){
+  var x = 10;
+    var y = 20;
+    $(".img-box> img").click(function(){
+      layer.open({
+        type: 2,
+        title: '',
+        shadeClose: true,
+        skin:'logonClass',
+        maxmin: false, //开启最大化最小化按钮
+        area: ['1340px', '759px'],
+        content: ['./图片预览器.html']
+      });
+    });
+  $(".img-box>img").mouseover(function(e){
+      
+    var tooltip = "<div id='tooltip'><img src='"+ this.src +"' alt='产品预览图'/><\/div>"; //创建 div 元素
+    $("body").append(tooltip);  //把它追加到文档中             
+    $("#tooltip")
+      .css({
+        "top": (e.pageY+y) + "px",
+        "left":  (e.pageX+x)  + "px"
+      }).show("fast");    //设置x坐标和y坐标，并且显示
+    }).mouseout(function(){
+      
+    $("#tooltip").remove();  //移除 
+    }).mousemove(function(e){
+    $("#tooltip")
+      .css({
+        "top": (e.pageY+y) + "px",
+        "left":  (e.pageX+x)  + "px"
+      });
+  });
+  $('.log').on('click',function(){
+    layer.open({
+      type:2,
+      title:false,
+      area:['500px', '490px'],
+      skin:'logonClass',
+      content:['http://192.168.0.11:84/front/gcr/%E7%99%BB%E5%BD%95/logon.html','no'],
+      yes:function(index,layero){
+        layer.close(index);
+      }
+    });
+  });
+      $('#classMap').on('click',function(e){
+      e.preventDefault();
+      if (this.timer) {
+        clearTimeout(this.timer);
+      }
+      this.timer = setTimeout(function(){
+        var delta = $('#room_id_04').offset().top;
+        $('html,body').animate({
+          scrollTop: (delta - 70) + 'px'
+        },{
+          duration: 500,
+          easing: 'easeInSine'
+        });
+      },17);
+    });
+      $('#picture').click(function(){
+      layer.open({
+        type: 2,
+        title: '',
+        skin:'logonClass',
+        shadeClose: true,
+        maxmin: false, //开启最大化最小化按钮
+        area: ['1340px', '759px'],
+        content: ['./图片预览器.html']
+      });
+    });
+      /*$('#tabChange>li').click(function(){
+        $('#tabChange>li').removeClass("on");
+        $(this).addClass("on");
+        var index = $(this).index();
+        var offset = $('#a_' + index).offset().top;
+        $('html, body').animate({scrollTop: (offset-50) + 'px'}, 1000);
+      })*/
+    })
+  </script>
+</body>
+</html>
