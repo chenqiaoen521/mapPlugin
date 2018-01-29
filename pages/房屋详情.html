@@ -383,37 +383,37 @@
     <div class="left">
       <div class="map" id="map"></div>
       <ul class="shortcut" id="shortcut">
-        <li>
+        <li data-name="icon-subway" data-val="../img/bus.png" class="on">
           <i class="icon icon-subway"></i>
           <p>交通</p>
         </li>
-        <li>
+        <li data-name="icon-food" data-val="../img/food.png">
           <i class="icon icon-food"></i>
           <p>餐饮</p>
         </li>
-        <li>
+        <li data-name="icon-shopping" data-val="../img/market.png">
           <i class="icon icon-shopping"></i>
-          <p>购物</p>
+          <p>商场</p>
         </li>
-        <li>
+        <li data-name="icon-bank" data-val="../img/bank.png">
           <i class="icon icon-bank"></i>
           <p>银行</p>
         </li>
-        <li>
+        <li data-name="icon-scenery" data-val="../img/scenery.png">
           <i class="icon icon-scenery"></i>
           <p>景点</p>
         </li>
-        <li>
+        <li data-name="icon-market" data-val="../img/shopping.png">
           <i class="icon icon-market"></i>
           <p>超市</p>
         </li>
-        <li>
+        <li data-name="icon-hospital" data-val="../img/hospital.png">
           <i class="icon icon-hospital"></i>
           <p>医院</p>
         </li>
-        <li>
+        <li data-name="icon-train" data-val="../img/move.png">
           <i class="icon icon-train"></i>
-          <p>火车站</p>
+          <p>电影院</p>
         </li>
       </ul>
       
@@ -726,9 +726,11 @@
     map_obj.main('公交站',500,'icon-subway','../img/bus.png');// 搜索附近公交站
 
   $('#shortcut > li').click(function(){
+      $(this).addClass('on');
+      $(this).siblings().removeClass('on');
       var text = $(this).children('p').text();
-      var cla  = $(this).attr('data-name');
-      var imgs = $(this).attr('data-val');
+      var cla  = $(this).data('name');
+      var imgs = $(this).data('val');
       if (cla == 'icon-subway'){
          text = '公交站';
       }
@@ -768,7 +770,6 @@
     });
   });
   $(".img-box>img").mouseover(function(e){
-      
     var tooltip = "<div id='tooltip'><img src='"+ this.src +"' alt='产品预览图'/><\/div>"; //创建 div 元素
     $("body").append(tooltip);  //把它追加到文档中             
     $("#tooltip")
