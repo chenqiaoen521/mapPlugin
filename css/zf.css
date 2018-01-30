@@ -909,7 +909,7 @@ border-color:#666 transparent transparent transparent;top:19px;margin-left: 3px;
     text-overflow: ellipsis;}
 .peripheral  .station > ul > .on > .name {color: #ffc000 !important; }
 .peripheral  .station > ul > .on > .name > a{color: #ffc000 !important; }
-.peripheral  .station .meter {float: right;margin-top:6px;margin-right: 15px;}
+.peripheral  .station .meter {float: right;margin-top:12px;margin-right: 15px;}
 .peripheral  .station .input {height: 40px;line-height: 40px;width: 251px;border:1px solid #e8eaee;padding:0 10px;margin:21px 20px;color: #333333;}
 .shadow{position: absolute;bottom: -3px;left: 0;right: 0; height: 5px; background-image:linear-gradient(to bottom,#ededed,#fff);}
 .peripheral  .station .btn{width: 62px; height: 30px;line-height: 30px;background:#fff;color: #666666;border:1px solid #b2b2b2;margin-right: 2px;cursor: pointer;}
