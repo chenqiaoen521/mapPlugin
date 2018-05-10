@@ -6,20 +6,24 @@ var is = (function($){
         fixbar: '#fixbar',
         posArea: '.hook-area',
         firstPos: '#room_id_01',
-        offsetH: 70
+        offsetH: 70,
+        highlight: '.highlight-title'
       };
       var iScroll = function (options) {
         this.opts = $.extend(true, {}, doms, options || {});
         this.initDom();
         this.events();
+        this.scroll = true;
       }
       var fn = iScroll.prototype;
       fn.initDom = function () {
         this.tabBar = $(this.opts.tabBar);
+        this.highlight = $(this.opts.highlight);
         this.fixbar = $(this.opts.fixbar);
         this.fixbarTab = $(this.opts.fixbar).find('ul>li');
         this.posArea = $(this.opts.posArea);
         this.win = $(window);
+        this.highlightW = this.highlight.width();
         this.posAreaArr = this.posH2Arrary();
       };
       fn.events = function () {
@@ -51,14 +55,35 @@ var is = (function($){
         var diff = this.opts.offsetH + 1;
         for (var i = 0; i < arr.length; i ++) {
           if (sTop >= (arr[i] - diff) && sTop <= (arr[i + 1] - diff)) {
-            this.fixbarTab.eq(i).addClass('on');
-            this.tabBar.children().eq(i).addClass('on');
-          } else {
-            this.fixbarTab.eq(i).removeClass('on');
-            this.tabBar.children().eq(i).removeClass('on');
+            this.animate(i);
           }
         }
       };
+      fn.animate = function (i) {
+        if (this.index === undefined) {
+          this.index = i;
+          this.tirgger();
+          return
+        }
+        if (this.index === i) {
+          return
+        } else {
+          this.index = i;
+          this.tirgger();
+        }
+      }
+      fn.tirgger = function () {
+        var me = this;
+        this.fixbarTab.removeClass('active');
+        this.tabBar.children().removeClass('on');
+        this.highlight.delay(300).animate({left: this.highlightW * me.index}, {
+          duration: 300,
+          complete: function () {
+            me.fixbarTab.eq(me.index).addClass('active');
+            me.tabBar.children().eq(me.index).addClass('on');
+          }
+        });
+      }
       fn.posH2Arrary = function () {
         var arr = [];
         var first = this.tabBar.offset().top;

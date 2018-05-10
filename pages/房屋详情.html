@@ -19,6 +19,20 @@
     <script src="../js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=KwZhXg0g9C5zZpDIZX895Xfn"></script>
   <title>大鱼 - 专业的一站式公寓PMS云平台</title>
+  <style>
+  #tabwrapper{position: relative;}
+  .highlight-title {
+    position: absolute;
+    width: 112px;
+    height: 60px;
+    box-sizing:border-box;
+    border-bottom: 4px solid #ffc000;
+    top: 0;
+    left: 0;
+    background: #f3f3f3;
+    z-index: -1;
+  }
+  </style>
   <meta name="description" content="专业的一站式公寓PMS云平台">
   <script>
     $(function(){
@@ -126,8 +140,11 @@
   </ul>
   <div class="fixbar" id="fixbar">
     <div class="fixbar-wrapper clearfix">
+      <div class="highlight-title">
+        
+      </div>
       <ul class="clearfix tab">
-        <li class="on">房源详情</li>
+        <li class="active">房源详情</li>
         <li>房间信息</li>
         <li>位置交通</li>
         <li>周边配套</li>

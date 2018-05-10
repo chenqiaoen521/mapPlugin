@@ -810,9 +810,10 @@ border-color:#666 transparent transparent transparent;top:19px;margin-left: 3px;
 .fixbar {width: 100%;position: fixed;top: 0;left: 0;background-color: #FFF;box-shadow: 0 3px 10px #e6e6e6;
     -moz-box-shadow: 0 3px 10px #e6e6e6;
     -webkit-box-shadow: 0 3px 10px #e6e6e6;display: none;z-index: 1;}
-.fixbar .fixbar-wrapper{width: 1200px;margin:0 auto;}
+.fixbar .fixbar-wrapper{width: 1200px;margin:0 auto;position: relative;}
 .fixbar .tab{width: 100%;margin:0 0;  border-bottom:none;float: left;}
 .fixbar .tab > li{float: left;line-height: 60px;height: 60px;width: 112px;text-align: center;font-size: 18px;}
+.fixbar .tab > li.active {color: #ffc000;}
 .fixbar .btns{float: left;margin-left: -359px;width: 359px;}
 .fixbar .btns .service-time{display:inline-block;vertical-align: bottom; width: 190px;text-align: center;background-color: #fff;height: 60px;}
 .fixbar .btns .service-time > .a{font-size: 22px;color: #333;margin:6px 0 4px;}
